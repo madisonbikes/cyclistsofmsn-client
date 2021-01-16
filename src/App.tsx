@@ -13,7 +13,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Twitter
+          Twitter(s)
         </a>
       </header>
     </div>
