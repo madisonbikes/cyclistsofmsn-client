@@ -8,7 +8,7 @@ type Props = Record<string, never>;
 
 type State = {
   loading: boolean;
-  photoId: number;
+  photoId: number | undefined;
 };
 
 type ImageData = {
@@ -18,8 +18,8 @@ type ImageData = {
 
 export default class App extends Component<Props, State> {
   state: State = {
-    loading: false,
-    photoId: -1,
+    loading: true,
+    photoId: undefined,
   };
 
   images: ImageData[] = [];
@@ -28,7 +28,6 @@ export default class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    // FIXME make this async so that loading... works
     this.load();
   }
 
@@ -89,9 +88,7 @@ export default class App extends Component<Props, State> {
     return (
       <div className="App">
         <header className="App-header">
-          {this.state.photoId !== -1 && (
-            <CyclistPhoto photoId={this.state.photoId} />
-          )}
+          {this.state.photoId && <CyclistPhoto photoId={this.state.photoId} />}
           <p>Cyclists of Madison in the house!</p>
           <a
             className="App-link"
