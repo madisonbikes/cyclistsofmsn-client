@@ -7,7 +7,11 @@ type Props = {
 export default class CyclistPhoto extends Component<Props> {
   render(): ReactNode {
     return (
-      <img src={"/images/" + this.props.photoId} height="600" alt="cyclist" />
+      <img
+        src={"/images/" + this.props.photoId + "?height=512"}
+        height="512"
+        alt="cyclist"
+      />
     );
   }
 }
