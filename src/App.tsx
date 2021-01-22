@@ -89,7 +89,7 @@ export default class App extends Component<Props, State> {
       <div className="App">
         <header className="App-header">
           {this.state.photoId && <CyclistPhoto photoId={this.state.photoId} />}
-          <p>Cyclists of Madison in the house!</p>
+          <p>Cyclists of Madison</p>
           <a
             className="App-link"
             href="https://twitter.com/cyclists_of_msn"
