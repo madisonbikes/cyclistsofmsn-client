@@ -1,94 +1,57 @@
 import "./App.css";
-import React, { Component, ReactNode } from "react";
-import CyclistPhoto from "./CyclistPhoto";
-import NextButton from "./NextButton";
+import React, { useEffect, useState } from "react";
+import { CyclistPhoto } from "./CyclistPhoto";
+import { NextButton } from "./NextButton";
 import axios from "axios";
-
-type Props = Record<string, never>;
-
-type State = {
-  loading: boolean;
-  photoId: number | undefined;
-};
 
 type ImageData = {
   id: number;
   filename: string;
 };
 
-export default class App extends Component<Props, State> {
-  state: State = {
-    loading: true,
-    photoId: undefined,
-  };
+export const App = (): JSX.Element => {
+  const [loading, setLoading] = useState(true);
+  const [photoId, setPhotoId] = useState<number | undefined>(undefined);
+  const [images, setImages] = useState<ImageData[]>([]);
 
-  images: ImageData[] = [];
-  mounted = false;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.load();
-  }
-
-  private load(): void {
+  useEffect(() => {
     console.log("loading image data");
     const imageQuery = "/images";
     axios
       .get(imageQuery)
       .then((result) => {
-        this.images = result.data;
-        this.handleNextPhoto();
+        setImages(result.data);
+        setLoading(false);
+        setPhotoId(result.data[0].id);
       })
       .catch((error) => console.error(error));
+  }, []);
+
+  if (loading) {
+    return renderLoading();
+  } else {
+    return renderPhoto();
   }
 
-  componentDidMount(): void {
-    this.mounted = true;
-    this.handleNextPhoto();
-  }
-
-  componentWillUnmount(): void {
-    this.mounted = false;
-  }
-
-  handleNextPhoto = (): void => {
-    if (!this.mounted || this.images.length === 0) return;
-
-    let id: number;
-    if (this.state.photoId === -1) {
-      id = this.images[0].id;
-    } else {
-      let ndx = this.images.findIndex(
-        (value) => value.id === this.state.photoId
-      );
-      ndx++;
-      if (ndx >= this.images.length) {
-        ndx = 0;
-      }
-      id = this.images[ndx].id;
-    }
-
-    this.setState({ loading: false, photoId: id });
-  };
-
-  render(): ReactNode {
-    if (this.state.loading) {
-      return this.renderLoading();
-    } else {
-      return this.renderPhoto();
-    }
-  }
-
-  renderLoading(): ReactNode {
+  function renderLoading() {
     return <div>Loading...</div>;
   }
 
-  renderPhoto(): ReactNode {
+  function handleNextPhoto() {
+    let ndx = images.findIndex((value) => value.id === photoId);
+    ndx++;
+    if (ndx >= images.length) {
+      ndx = 0;
+    }
+    setLoading(false);
+    setPhotoId(images[ndx].id);
+  }
+
+  function renderPhoto() {
     return (
       <div className="App">
         <header className="App-header">
-          {this.state.photoId && <CyclistPhoto photoId={this.state.photoId} />}
+          {photoId && <CyclistPhoto photoId={photoId} />}
           <p>Cyclists of Madison</p>
           <a
             className="App-link"
@@ -98,9 +61,9 @@ export default class App extends Component<Props, State> {
           >
             Twitter
           </a>
-          <NextButton handleNextPhoto={this.handleNextPhoto} />
+          <NextButton handleNextPhoto={handleNextPhoto} />
         </header>
       </div>
     );
   }
-}
+};

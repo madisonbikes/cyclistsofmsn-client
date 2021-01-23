@@ -1,17 +1,15 @@
-import React, { Component, ReactNode } from "react";
+import React from "react";
 
 type Props = {
   photoId: number;
 };
 
-export default class CyclistPhoto extends Component<Props> {
-  render(): ReactNode {
-    return (
-      <img
-        src={"/images/" + this.props.photoId + "?height=512"}
-        height="512"
-        alt="cyclist"
-      />
-    );
-  }
-}
+export const CyclistPhoto = ({ photoId }: Props): JSX.Element => {
+  return (
+    <img
+      src={"/images/" + photoId + "?height=512"}
+      height="512"
+      alt="cyclist"
+    />
+  );
+};
