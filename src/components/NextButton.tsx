@@ -1,3 +1,4 @@
+import { Button } from "@material-ui/core";
 import React from "react";
 
 type Props = {
@@ -5,5 +6,9 @@ type Props = {
 };
 
 export function NextButton({ handleNextPhoto }: Props): JSX.Element {
-  return <button onClick={handleNextPhoto}>Next Image</button>;
+  return (
+    <Button color="primary" onClick={handleNextPhoto}>
+      Next Photo
+    </Button>
+  );
 }

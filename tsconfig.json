@@ -1,11 +1,7 @@
 {
   "extends": "@tsconfig/node10/tsconfig.json",
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -20,7 +16,5 @@
     "jsx": "react-jsx",
     "allowJs": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
