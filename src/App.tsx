@@ -6,13 +6,12 @@ import {
   Container,
   Link,
 } from "@material-ui/core";
-import randomNumber from "random-number-csprng";
 
 import { CyclistPhoto } from "./components/CyclistPhoto";
 import { NextButton } from "./components/NextButton";
 import { PreviousButton } from "./components/PreviousButton";
 import { RandomButton } from "./components/RandomButton";
-import { ImageData, loadImageList } from "./api";
+import { ImageData, loadImageList, getNextRandomIndex } from "./api";
 
 export const App = (): JSX.Element => {
   const [loading, setLoading] = useState(true);
@@ -23,7 +22,7 @@ export const App = (): JSX.Element => {
     async function loadImages() {
       console.log("loading image data");
       const response = await loadImageList();
-      const ndx = await randomNumber(0, response.length - 1);
+      const ndx = await getNextRandomIndex(response.length);
       setLoading(false);
       setPhotoId(response[ndx].id);
       setImages(response);
@@ -46,7 +45,7 @@ export const App = (): JSX.Element => {
   }
 
   async function handleRandomPhoto() {
-    const ndx = await randomNumber(0, images.length - 1);
+    const ndx = await getNextRandomIndex(images.length);
     setLoading(false);
     setPhotoId(images[ndx].id);
   }

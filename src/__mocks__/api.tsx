@@ -1,4 +1,6 @@
 import { ImageData } from "../api";
+
+/** mocks that make the tests deterministic */
 export async function loadImageList(): Promise<ImageData[]> {
   const response = {
     data: [
@@ -8,6 +10,10 @@ export async function loadImageList(): Promise<ImageData[]> {
   };
   await sleep(250);
   return response.data;
+}
+
+export async function getNextRandomIndex(unused: number): Promise<number> {
+  return 1;
 }
 
 function sleep(ms: number) {
