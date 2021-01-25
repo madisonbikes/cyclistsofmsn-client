@@ -1,6 +1,5 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import {
   ButtonGroup,
   CircularProgress,
@@ -13,11 +12,7 @@ import { CyclistPhoto } from "./components/CyclistPhoto";
 import { NextButton } from "./components/NextButton";
 import { PreviousButton } from "./components/PreviousButton";
 import { RandomButton } from "./components/RandomButton";
-
-type ImageData = {
-  id: number;
-  filename: string;
-};
+import { ImageData, loadImageList } from "./api";
 
 export const App = (): JSX.Element => {
   const [loading, setLoading] = useState(true);
@@ -27,12 +22,11 @@ export const App = (): JSX.Element => {
   useEffect(() => {
     async function loadImages() {
       console.log("loading image data");
-      const imageQuery = "/images";
-      const response = await axios.get(imageQuery);
-      const ndx = await randomNumber(0, response.data.length - 1);
+      const response = await loadImageList();
+      const ndx = await randomNumber(0, response.length - 1);
       setLoading(false);
-      setPhotoId(response.data[ndx].id);
-      setImages(response.data);
+      setPhotoId(response[ndx].id);
+      setImages(response);
     }
     loadImages();
   }, []);
