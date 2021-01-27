@@ -21,8 +21,14 @@ export const App = (): JSX.Element => {
   useEffect(() => {
     async function loadImages() {
       console.log("loading image data");
+      // eslint-disable-next-line no-debugger
+      debugger;
       const response = await loadImageList();
+      // eslint-disable-next-line no-debugger
+      debugger;
       const ndx = await getNextRandomIndex(response.length);
+      // eslint-disable-next-line no-debugger
+      debugger;
       setLoading(false);
       setPhotoId(response[ndx].id);
       setImages(response);
