@@ -4,10 +4,5 @@
       "path": "."
     }
   ],
-  "settings": {
-    "eslint.packageManager": "yarn",
-    "prettier.packageManager": "yarn",
-    "editor.formatOnSave": true,
-    "eslint.codeActionsOnSave.mode": "problems"
-  }
+  "settings": {}
 }
