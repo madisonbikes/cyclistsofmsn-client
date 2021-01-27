@@ -5,10 +5,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch via NPM",
+      "name": "Launch",
       "request": "launch",
       "runtimeArgs": ["start"],
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "yarn",
       "skipFiles": ["<node_internals>/**"],
       "type": "pwa-node"
     },
