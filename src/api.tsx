@@ -15,5 +15,8 @@ export async function loadImageList(): Promise<ImageData[]> {
 export async function getNextRandomIndex(
   imageListSize: number
 ): Promise<number> {
+  if (imageListSize === 1) {
+    return 0;
+  }
   return randomNumber(0, imageListSize - 1);
 }

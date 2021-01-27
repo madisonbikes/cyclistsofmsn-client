@@ -19,21 +19,21 @@ export const App = (): JSX.Element => {
   const [images, setImages] = useState<ImageData[]>([]);
 
   useEffect(() => {
-    async function loadImages() {
-      console.log("loading image data");
-      // eslint-disable-next-line no-debugger
-      debugger;
+    async function loadImages(iteration: number) {
+      console.log(`loading image data # ${iteration}`);
       const response = await loadImageList();
-      // eslint-disable-next-line no-debugger
-      debugger;
-      const ndx = await getNextRandomIndex(response.length);
-      // eslint-disable-next-line no-debugger
-      debugger;
-      setLoading(false);
-      setPhotoId(response[ndx].id);
-      setImages(response);
+      console.log(`response: {response.length}`);
+      if (!response || response.length === 0) {
+        // call it again sam
+        await loadImages(iteration + 1);
+      } else {
+        const ndx = await getNextRandomIndex(response.length);
+        setLoading(false);
+        setPhotoId(response[ndx].id);
+        setImages(response);
+      }
     }
-    loadImages();
+    loadImages(1);
   }, []);
 
   if (loading) {
