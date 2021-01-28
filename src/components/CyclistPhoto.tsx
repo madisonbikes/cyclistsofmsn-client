@@ -1,10 +1,11 @@
 import React from "react";
 
 type Props = {
-  photoId: number;
+  photoId: number|undefined;
 };
 
 export const CyclistPhoto = ({ photoId }: Props): JSX.Element => {
+  if(!photoId) return <></>
   return (
     <img
       src={"/images/" + photoId + "?height=512"}

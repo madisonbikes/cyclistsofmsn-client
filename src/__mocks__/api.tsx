@@ -12,7 +12,7 @@ export async function loadImageList(): Promise<ImageData[]> {
   return response.data;
 }
 
-export async function getNextRandomIndex(unused: number): Promise<number> {
+export async function getNextRandomIndex(_unused: number): Promise<number> {
   return 1;
 }
 

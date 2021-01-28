@@ -4,14 +4,17 @@ import {
   ButtonGroup,
   CircularProgress,
   Container,
-  Link,
+  Link
 } from "@material-ui/core";
 
 import { CyclistPhoto } from "./components/CyclistPhoto";
 import { NextButton } from "./components/NextButton";
 import { PreviousButton } from "./components/PreviousButton";
 import { RandomButton } from "./components/RandomButton";
+import { LoginButton } from "./components/LoginButton";
 import { ImageData, loadImageList, getNextRandomIndex } from "./api";
+import { LogoutButton } from "./components/LogoutButton";
+import { Profile } from "./components/Profile";
 
 export const App = (): JSX.Element => {
   const [loading, setLoading] = useState(true);
@@ -19,21 +22,17 @@ export const App = (): JSX.Element => {
   const [images, setImages] = useState<ImageData[]>([]);
 
   useEffect(() => {
-    async function loadImages(iteration: number) {
-      console.log(`loading image data # ${iteration}`);
+    async function loadImages() {
+      console.log(`loading image data`);
       const response = await loadImageList();
-      console.log(`response: {response.length}`);
-      if (!response || response.length === 0) {
-        // call it again sam
-        await loadImages(iteration + 1);
-      } else {
-        const ndx = await getNextRandomIndex(response.length);
-        setLoading(false);
-        setPhotoId(response[ndx].id);
-        setImages(response);
-      }
+      const ndx = await getNextRandomIndex(response.length);
+      setLoading(false);
+      setPhotoId(response[ndx].id);
+      setImages(response);
     }
-    loadImages(1);
+
+    // FIXME unused promise
+    loadImages();
   }, []);
 
   if (loading) {
@@ -79,7 +78,7 @@ export const App = (): JSX.Element => {
   function renderPhoto() {
     return (
       <Container>
-        {photoId && <CyclistPhoto photoId={photoId} />}
+        <CyclistPhoto photoId={photoId} />
         <p>Cyclists of Madison</p>
         <Link
           href="https://twitter.com/cyclists_of_msn"
@@ -94,7 +93,12 @@ export const App = (): JSX.Element => {
             <RandomButton handleRandomPhoto={handleRandomPhoto} />
             <PreviousButton handlePreviousPhoto={handlePreviousPhoto} />
             <NextButton handleNextPhoto={handleNextPhoto} />
+            <LoginButton />
+            <LogoutButton />
           </ButtonGroup>
+        </div>
+        <div>
+          <Profile />
         </div>
       </Container>
     );

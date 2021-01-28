@@ -4,10 +4,15 @@ import "./index.css";
 import { App } from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "@fontsource/roboto";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Auth0Provider domain="db122.us.auth0.com"
+                   clientId="h9L21cuV9NtpRaeWkncuEhhEHCwq6E8e"
+                   redirectUri={window.location.origin}>
+      <App />
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
