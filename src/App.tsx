@@ -22,18 +22,37 @@ export const App = (): JSX.Element => {
   const [images, setImages] = useState<ImageData[]>([]);
 
   useEffect(() => {
-    async function loadImages() {
-      console.log(`loading image data`);
-      const response = await loadImageList();
-      const ndx = await getNextRandomIndex(response.length);
-      setLoading(false);
-      setPhotoId(response[ndx].id);
-      setImages(response);
-    }
+      // use flag to avoid setting state if component unmounts (unlikely)
+      let abort = false;
+      async function loadImages() {
+        console.debug(`loading image data`);
+        const response = await loadImageList();
+        const ndx = await getNextRandomIndex(response.length);
+        if (!abort) {
+          setLoading(false);
+          setPhotoId(response[ndx].id);
+          setImages(response);
+        }
+      }
 
-    // FIXME unused promise
-    loadImages();
-  }, []);
+      // resolve these promises just to satisfy eslint and render error in console
+      loadImages()
+        .then(() => {
+          // do nothing
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+
+      // cleanup aborts load
+      return () => {
+        abort = true;
+      };
+
+    },
+    // empty dependency array causes effect to be run only once
+    []
+  );
 
   if (loading) {
     return renderLoading();
