@@ -21,6 +21,9 @@ module.exports = {
     },
     ecmaVersion: 12,
   },
-  plugins: ["react", "@typescript-eslint"],
-  rules: {},
+  plugins: ["react", "@typescript-eslint", "no-autofix"],
+  rules: {
+    "prefer-const": "off",
+    "no-autofix/prefer-const": "error"
+  },
 };
