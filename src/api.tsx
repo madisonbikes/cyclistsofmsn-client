@@ -1,4 +1,4 @@
-import axios from "axios";
+import { Images } from "./services/api/Images"
 import randomNumber from "random-number-csprng";
 
 export type ImageData = {
@@ -7,9 +7,8 @@ export type ImageData = {
 };
 
 export async function loadImageList(): Promise<ImageData[]> {
-  const imageQuery = "/images";
-  const response = await axios.get(imageQuery);
-  return response.data;
+  const response = await Images.index()
+  return response.data
 }
 
 export async function getNextRandomIndex(
