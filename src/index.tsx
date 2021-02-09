@@ -10,7 +10,10 @@ ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider domain="db122.us.auth0.com"
                    clientId="h9L21cuV9NtpRaeWkncuEhhEHCwq6E8e"
-                   redirectUri={window.location.origin}>
+                   redirectUri={window.location.origin}
+                   audience={"https://cyclists_of_msn/api"}
+                   scope={"create:post"}
+    >
       <App />
     </Auth0Provider>
   </React.StrictMode>,
