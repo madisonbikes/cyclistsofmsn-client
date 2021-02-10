@@ -7,14 +7,12 @@ export function Profile(): JSX.Element {
     const executePost = async () => {
       try {
         const accessToken = await getAccessTokenSilently({
-          audience: "https://cyclists_of_msn/api",
           scope: "create:post"
         });
 
-        const userDetailsByIdUrl = `/post`;
+        const userDetailsByIdUrl = `/posts`;
 
         const response = await fetch(userDetailsByIdUrl, {
-          method: "POST",
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
@@ -25,8 +23,9 @@ export function Profile(): JSX.Element {
       }
     };
 
+    // noinspection JSIgnoredPromiseFromCall
     executePost();
-  }, []);
+  }, [getAccessTokenSilently]);
 
   if (isLoading) {
     return <div>Loading ...</div>;

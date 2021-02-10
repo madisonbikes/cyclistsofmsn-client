@@ -1,21 +1,23 @@
 import { Images } from "./services/api/Images"
-import randomNumber from "random-number-csprng";
+import { Posts } from "./services/api/Posts";
 
 export type ImageData = {
-  id: number;
+  id: string;
   filename: string;
 };
 
-export async function loadImageList(): Promise<ImageData[]> {
-  const response = await Images.index()
+export type PostData = {
+  id: string;
+  timestamp: string
+  image_id: string;
+}
+
+export async function loadPostList(): Promise<PostData[]> {
+  const response = await Posts.index()
   return response.data
 }
 
-export async function getNextRandomIndex(
-  imageListSize: number
-): Promise<number> {
-  if (imageListSize === 1) {
-    return 0;
-  }
-  return randomNumber(0, imageListSize - 1);
+export async function loadCurrentPost(): Promise<PostData> {
+  const response = await Posts.current()
+  return response.data
 }
