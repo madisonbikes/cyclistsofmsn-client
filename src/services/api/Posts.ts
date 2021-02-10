@@ -5,7 +5,7 @@ export const Posts = {
   index: (): Promise<AxiosResponse> =>
     get("/posts"),
   current: (): Promise<AxiosResponse> =>
-    get(`/posts/current`),
+    get("/posts/current"),
   single: (id: string): Promise<AxiosResponse> =>
     get(`/posts/${id}`)
 };

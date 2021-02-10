@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 
 import { CyclistPhoto } from "./components/CyclistPhoto";
-import { Posts } from "./components/Posts"
+import { PostList } from "./components/PostList"
 import parseJSON from "date-fns/parseJSON";
 import { loadCurrentPost } from "./api";
 
@@ -26,7 +26,7 @@ export const App = (): JSX.Element => {
         const response = await loadCurrentPost()
         if (!abort) {
           setLoading(false);
-          setPhotoId(response.image_id);
+          setPhotoId(response.image);
           setTimestamp(parseJSON(response.timestamp))
         }
       }
@@ -53,7 +53,7 @@ export const App = (): JSX.Element => {
     <Router>
       <Switch>
         <Route path="/posts">
-          <Posts />
+          <PostList />
         </Route>
         <Route path="/">
           <Home />

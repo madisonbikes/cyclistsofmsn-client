@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { loadPostList, PostData } from "../api";
-import parseJSON from "date-fns/parseJSON";
 import { ListItem } from "@material-ui/core";
+import parseJSON from "date-fns/parseJSON";
 
-export function Posts(): JSX.Element {
+export function PostList(): JSX.Element {
   const [posts, setPosts] = useState<PostData[] | undefined>(undefined);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export function Posts(): JSX.Element {
           return (
             <ListItem key={post.id}>
               <img
-                src={`/images/${post.image_id}?height=64`}
+                src={`/images/${post.image}?height=64`}
                 alt="cyclist"
               />
               {parsedTimestamp}
