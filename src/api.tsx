@@ -1,22 +1,23 @@
-import axios from "axios";
-import randomNumber from "random-number-csprng";
+import { Images } from "./services/api/Images";
+import { Posts } from "./services/api/Posts";
 
 export type ImageData = {
-  id: number;
+  id: string;
   filename: string;
 };
 
-export async function loadImageList(): Promise<ImageData[]> {
-  const imageQuery = "/images";
-  const response = await axios.get(imageQuery);
-  return response.data;
+export type PostData = {
+  id: string;
+  timestamp: string;
+  image: string;
 }
 
-export async function getNextRandomIndex(
-  imageListSize: number
-): Promise<number> {
-  if (imageListSize === 1) {
-    return 0;
-  }
-  return randomNumber(0, imageListSize - 1);
+export async function loadPostList(): Promise<PostData[]> {
+  const response = await Posts.index();
+  return response.data
+}
+
+export async function loadCurrentPost(): Promise<PostData> {
+  const response = await Posts.current();
+  return response.data;
 }

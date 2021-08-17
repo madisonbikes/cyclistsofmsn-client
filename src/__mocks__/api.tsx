@@ -1,19 +1,24 @@
-import { ImageData } from "../api";
+import { ImageData, PostData } from "../api";
+import { Posts } from "../services/api/Posts";
 
 /** mocks that make the tests deterministic */
 export async function loadImageList(): Promise<ImageData[]> {
-  const response = {
-    data: [
-      { id: 1, filename: "filename1" },
-      { id: 2, filename: "filename2" },
-    ],
-  };
+  const data = [
+      { id: "1", filename: "filename1" },
+      { id: "2", filename: "filename2" },
+    ]
   await sleep(250);
-  return response.data;
+  return data;
 }
 
-export async function getNextRandomIndex(_unused: number): Promise<number> {
-  return 1;
+export async function loadPostList(): Promise<PostData[]> {
+  // TODO
+  return Promise.reject()
+}
+
+export async function loadCurrentPost(): Promise<PostData> {
+  // TODO
+  return Promise.reject()
 }
 
 function sleep(ms: number) {

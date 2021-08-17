@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     commonjs: true,
-    es2021: true,
+    es6: true,
     browser: true,
     jest: true,
   },
@@ -11,6 +11,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "react-app",
     "react-app/jest",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
   ],
@@ -19,8 +20,11 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
+    ecmaVersion: 6,
   },
-  plugins: ["react", "@typescript-eslint"],
-  rules: {},
+  plugins: ["react", "@typescript-eslint", "no-autofix"],
+  rules: {
+    "prefer-const": "off",
+    "no-autofix/prefer-const": "error"
+  },
 };
