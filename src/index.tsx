@@ -1,26 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import "./index.css";
 import { App } from "./App";
-import reportWebVitals from "./reportWebVitals";
 import "@fontsource/roboto";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { createRoot } from "react-dom/client";
+import { StrictMode } from "react";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Auth0Provider domain="db122.us.auth0.com"
-                   clientId="h9L21cuV9NtpRaeWkncuEhhEHCwq6E8e"
-                   redirectUri={window.location.origin}
-                   audience={"https://cyclists_of_msn/api"}
-                   scope={"create:post"}
+const container = document.getElementById("app");
+const root = createRoot(container as Element);
+root.render(
+  <StrictMode>
+    <Auth0Provider
+      domain="db122.us.auth0.com"
+      clientId="h9L21cuV9NtpRaeWkncuEhhEHCwq6E8e"
+      redirectUri={window.location.origin}
+      audience={"https://cyclists_of_msn/api"}
+      scope={"create:post"}
     >
       <App />
     </Auth0Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

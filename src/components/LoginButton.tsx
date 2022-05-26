@@ -1,9 +1,8 @@
-import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 
 export const LoginButton = (): JSX.Element => {
-  const { loginWithRedirect, isAuthenticated, isLoading} = useAuth0();
+  const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading || isAuthenticated) return <></>;
 

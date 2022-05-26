@@ -1,33 +1,30 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import {
-  CircularProgress,
-  Container,
-  Link as ExternalLink
-} from "@material-ui/core";
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 import { CyclistPhoto } from "./components/CyclistPhoto";
-import { PostList } from "./components/PostList"
+import { PostList } from "./components/PostList";
 import parseJSON from "date-fns/parseJSON";
 import { loadCurrentPost } from "./api";
+import { CircularProgress, Container } from "@mui/material";
 
 export const App = (): JSX.Element => {
   const [loading, setLoading] = useState(true);
   const [photoId, setPhotoId] = useState<string | undefined>(undefined);
-  const [timestamp, setTimestamp] = useState<Date | undefined>(undefined)
+  const [timestamp, setTimestamp] = useState<Date | undefined>(undefined);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       // use flag to avoid setting state if component unmounts (unlikely)
       let abort = false;
 
       async function load() {
         console.debug(`loading current post`);
-        const response = await loadCurrentPost()
+        const response = await loadCurrentPost();
         if (!abort) {
           setLoading(false);
           setPhotoId(response.image);
-          setTimestamp(parseJSON(response.timestamp))
+          setTimestamp(parseJSON(response.timestamp));
         }
       }
 
@@ -44,21 +41,20 @@ export const App = (): JSX.Element => {
       return () => {
         abort = true;
       };
-
     },
     // empty dependency array causes effect to be run only once
     []
   );
   return (
     <Router>
-      <Switch>
+      <Routes>
         <Route path="/posts">
           <PostList />
         </Route>
         <Route path="/">
           <Home />
         </Route>
-      </Switch>
+      </Routes>
     </Router>
   );
 
@@ -111,14 +107,14 @@ export const App = (): JSX.Element => {
       <Container>
         <CyclistPhoto photoId={photoId} />
         <p>Cyclists of Madison on {timestamp?.toLocaleDateString()}</p>
-        <ExternalLink
-          href="https://twitter.com/cyclists_of_msn"
+        <Link
+          to="https://twitter.com/cyclists_of_msn"
           color="primary"
           target="_blank"
           rel="noopener noreferrer"
         >
           Twitter
-        </ExternalLink>
+        </Link>
         <br />
         <Link to="/posts">Posts</Link>
         {/*
