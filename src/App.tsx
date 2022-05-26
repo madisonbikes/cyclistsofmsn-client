@@ -1,12 +1,17 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link as RouterLink,
+} from "react-router-dom";
 
 import { CyclistPhoto } from "./components/CyclistPhoto";
 import { PostList } from "./components/PostList";
 import parseJSON from "date-fns/parseJSON";
 import { loadCurrentPost } from "./api";
-import { CircularProgress, Container } from "@mui/material";
+import { CircularProgress, Container, Link } from "@mui/material";
 
 export const App = (): JSX.Element => {
   const [loading, setLoading] = useState(true);
@@ -48,12 +53,8 @@ export const App = (): JSX.Element => {
   return (
     <Router>
       <Routes>
-        <Route path="/posts">
-          <PostList />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
+        <Route path="/posts" element={<PostList />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );
@@ -108,7 +109,7 @@ export const App = (): JSX.Element => {
         <CyclistPhoto photoId={photoId} />
         <p>Cyclists of Madison on {timestamp?.toLocaleDateString()}</p>
         <Link
-          to="https://twitter.com/cyclists_of_msn"
+          href="https://twitter.com/cyclists_of_msn"
           color="primary"
           target="_blank"
           rel="noopener noreferrer"
@@ -116,7 +117,9 @@ export const App = (): JSX.Element => {
           Twitter
         </Link>
         <br />
-        <Link to="/posts">Posts</Link>
+        <Link component={RouterLink} to="/posts">
+          Posts
+        </Link>
         {/*
         <div>
           <ButtonGroup>

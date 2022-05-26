@@ -5,7 +5,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
 
-const container = document.getElementById("app");
+const container = document.getElementById("root");
 const root = createRoot(container as Element);
 root.render(
   <StrictMode>
