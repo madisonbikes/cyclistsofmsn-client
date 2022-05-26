@@ -1,5 +1,4 @@
-import { Button } from "@material-ui/core";
-import React from "react";
+import { Button } from "@mui/material";
 
 type Props = {
   handleNextPhoto: () => void;

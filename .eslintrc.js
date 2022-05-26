@@ -11,6 +11,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "react-app",
     "react-app/jest",
+    "plugin:react/jsx-runtime",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
@@ -25,6 +26,6 @@ module.exports = {
   plugins: ["react", "@typescript-eslint", "no-autofix"],
   rules: {
     "prefer-const": "off",
-    "no-autofix/prefer-const": "error"
+    "no-autofix/prefer-const": "error",
   },
 };

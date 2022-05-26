@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { loadPostList, PostData } from "../api";
-import { ListItem } from "@material-ui/core";
 import parseJSON from "date-fns/parseJSON";
+import { ListItem } from "@mui/material";
 
 export function PostList(): JSX.Element {
   const [posts, setPosts] = useState<PostData[] | undefined>(undefined);
@@ -34,25 +34,23 @@ export function PostList(): JSX.Element {
   }, []);
 
   if (!posts) return <></>;
-  return (MyList(posts));
+  return MyList(posts);
 
   function MyList(posts: PostData[]): JSX.Element {
     return (
       <ul>
         {posts.map((post) => {
-          const parsedTimestamp = parseJSON(post.timestamp).toLocaleDateString();
+          const parsedTimestamp = parseJSON(
+            post.timestamp
+          ).toLocaleDateString();
           return (
             <ListItem key={post.id}>
-              <img
-                src={`/images/${post.image}?height=64`}
-                alt="cyclist"
-              />
+              <img src={`/images/${post.image}?height=64`} alt="cyclist" />
               {parsedTimestamp}
             </ListItem>
           );
         })}
       </ul>
     );
-
   }
 }

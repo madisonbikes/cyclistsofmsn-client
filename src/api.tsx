@@ -1,4 +1,3 @@
-import { Images } from "./services/api/Images";
 import { Posts } from "./services/api/Posts";
 
 export type ImageData = {
@@ -10,11 +9,11 @@ export type PostData = {
   id: string;
   timestamp: string;
   image: string;
-}
+};
 
 export async function loadPostList(): Promise<PostData[]> {
   const response = await Posts.index();
-  return response.data
+  return response.data;
 }
 
 export async function loadCurrentPost(): Promise<PostData> {
