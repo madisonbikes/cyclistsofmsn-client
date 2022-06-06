@@ -29,5 +29,6 @@ module.exports = {
     "prefer-const": "off",
     "no-autofix/prefer-const": "error",
     eqeqeq: ["warn", "smart"],
+    "func-style": ["warn"],
   },
 };

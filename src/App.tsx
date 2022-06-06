@@ -23,7 +23,7 @@ export const App = (): JSX.Element => {
       // use flag to avoid setting state if component unmounts (unlikely)
       let abort = false;
 
-      async function load() {
+      const load = async () => {
         console.debug(`loading current post`);
         const response = await loadCurrentPost();
         if (!abort) {
@@ -31,7 +31,7 @@ export const App = (): JSX.Element => {
           setPhotoId(response.image);
           setTimestamp(parseJSON(response.timestamp));
         }
-      }
+      };
 
       // resolve these promises just to satisfy eslint and render error in console
       load()
@@ -50,6 +50,15 @@ export const App = (): JSX.Element => {
     // empty dependency array causes effect to be run only once
     []
   );
+
+  const Home = () => {
+    if (loading) {
+      return <Loading />;
+    } else {
+      return <Photo photoId={photoId} timestamp={timestamp} />;
+    }
+  };
+
   return (
     <Router>
       <Routes>
@@ -86,41 +95,39 @@ export const App = (): JSX.Element => {
     setPhotoId(images[ndx].id);
   }
 */
+};
 
-  function Home() {
-    if (loading) {
-      return renderLoading();
-    } else {
-      return renderPhoto();
-    }
-  }
+const Loading = () => {
+  return (
+    <Container maxWidth="sm">
+      <CircularProgress />
+    </Container>
+  );
+};
 
-  function renderLoading() {
-    return (
-      <Container maxWidth="sm">
-        <CircularProgress />
-      </Container>
-    );
-  }
+type RenderPhotoProps = {
+  photoId: string | undefined;
+  timestamp: Date | undefined;
+};
 
-  function renderPhoto() {
-    return (
-      <Container>
-        <CyclistPhoto photoId={photoId} />
-        <p>Cyclists of Madison on {timestamp?.toLocaleDateString()}</p>
-        <Link
-          href="https://twitter.com/cyclists_of_msn"
-          color="primary"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Twitter
-        </Link>
-        <br />
-        <Link component={RouterLink} to="/posts">
-          Posts
-        </Link>
-        {/*
+const Photo = ({ photoId, timestamp }: RenderPhotoProps) => {
+  return (
+    <Container>
+      <CyclistPhoto photoId={photoId} />
+      <p>Cyclists of Madison on {timestamp?.toLocaleDateString()}</p>
+      <Link
+        href="https://twitter.com/cyclists_of_msn"
+        color="primary"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Twitter
+      </Link>
+      <br />
+      <Link component={RouterLink} to="/posts">
+        Posts
+      </Link>
+      {/*
         <div>
           <ButtonGroup>
             <RandomButton handleRandomPhoto={handleRandomPhoto} />
@@ -134,7 +141,6 @@ export const App = (): JSX.Element => {
           <Profile />
         </div>
         */}
-      </Container>
-    );
-  }
+    </Container>
+  );
 };

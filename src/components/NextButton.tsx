@@ -4,10 +4,10 @@ type Props = {
   handleNextPhoto: () => void;
 };
 
-export function NextButton({ handleNextPhoto }: Props): JSX.Element {
+export const NextButton = ({ handleNextPhoto }: Props) => {
   return (
     <Button color="primary" onClick={handleNextPhoto}>
       Next Photo
     </Button>
   );
-}
+};

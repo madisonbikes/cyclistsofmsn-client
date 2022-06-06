@@ -11,12 +11,12 @@ export type PostData = {
   image: string;
 };
 
-export async function loadPostList(): Promise<PostData[]> {
+export const loadPostList = async (): Promise<PostData[]> => {
   const response = await Posts.index();
   return response.data;
-}
+};
 
-export async function loadCurrentPost(): Promise<PostData> {
+export const loadCurrentPost = async (): Promise<PostData> => {
   const response = await Posts.current();
   return response.data;
-}
+};
