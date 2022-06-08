@@ -24,8 +24,11 @@ module.exports = {
     ecmaVersion: 6,
   },
   plugins: ["react", "@typescript-eslint", "no-autofix"],
+  reportUnusedDisableDirectives: true,
   rules: {
     "prefer-const": "off",
     "no-autofix/prefer-const": "error",
+    eqeqeq: ["warn", "smart"],
+    "func-style": ["warn"],
   },
 };

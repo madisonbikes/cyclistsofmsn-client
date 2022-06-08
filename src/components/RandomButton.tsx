@@ -4,10 +4,10 @@ type Props = {
   handleRandomPhoto: () => void;
 };
 
-export function RandomButton({ handleRandomPhoto }: Props): JSX.Element {
+export const RandomButton = ({ handleRandomPhoto }: Props) => {
   return (
     <Button color="primary" onClick={handleRandomPhoto}>
       Random Photo
     </Button>
   );
-}
+};
