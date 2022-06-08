@@ -1,17 +1,12 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Link as RouterLink,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import { CyclistPhoto } from "./components/CyclistPhoto";
 import { PostList } from "./components/PostList";
 import parseJSON from "date-fns/parseJSON";
 import { loadCurrentPost } from "./api";
-import { CircularProgress, Container, Link } from "@mui/material";
+import { CircularProgress, Container } from "@mui/material";
+import { PhotoContainer } from "./components/PhotoContainer";
 
 export const App = (): JSX.Element => {
   const [loading, setLoading] = useState(true);
@@ -55,7 +50,7 @@ export const App = (): JSX.Element => {
     if (loading) {
       return <Loading />;
     } else {
-      return <Photo photoId={photoId} timestamp={timestamp} />;
+      return <PhotoContainer photoId={photoId} timestamp={timestamp} />;
     }
   };
 
@@ -67,80 +62,12 @@ export const App = (): JSX.Element => {
       </Routes>
     </Router>
   );
-
-  /*
-  async function handleRandomPhoto() {
-    const ndx = await getNextRandomIndex(images.length);
-    setLoading(false);
-    setPhotoId(images[ndx].id);
-  }
-
-  function handleNextPhoto() {
-    let ndx = images.findIndex((value) => value.id === photoId);
-    ndx++;
-    if (ndx >= images.length) {
-      ndx = 0;
-    }
-    setLoading(false);
-    setPhotoId(images[ndx].id);
-  }
-
-  function handlePreviousPhoto() {
-    let ndx = images.findIndex((value) => value.id === photoId);
-    ndx--;
-    if (ndx < 0) {
-      ndx = images.length - 1;
-    }
-    setLoading(false);
-    setPhotoId(images[ndx].id);
-  }
-*/
 };
 
 const Loading = () => {
   return (
     <Container maxWidth="sm">
       <CircularProgress />
-    </Container>
-  );
-};
-
-type RenderPhotoProps = {
-  photoId: string | undefined;
-  timestamp: Date | undefined;
-};
-
-const Photo = ({ photoId, timestamp }: RenderPhotoProps) => {
-  return (
-    <Container>
-      <CyclistPhoto photoId={photoId} />
-      <p>Cyclists of Madison on {timestamp?.toLocaleDateString()}</p>
-      <Link
-        href="https://twitter.com/cyclists_of_msn"
-        color="primary"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Twitter
-      </Link>
-      <br />
-      <Link component={RouterLink} to="/posts">
-        Posts
-      </Link>
-      {/*
-        <div>
-          <ButtonGroup>
-            <RandomButton handleRandomPhoto={handleRandomPhoto} />
-            <PreviousButton handlePreviousPhoto={handlePreviousPhoto} />
-            <NextButton handleNextPhoto={handleNextPhoto} />
-            <LoginButton />
-            <LogoutButton />
-          </ButtonGroup>
-        </div>
-        <div>
-          <Profile />
-        </div>
-        */}
     </Container>
   );
 };

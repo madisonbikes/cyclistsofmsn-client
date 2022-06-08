@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
     "@tsconfig/node16": "^1.0.2",
     "@types/random-number-csprng": "^1.0.0",
     "@types/react-router-dom": "^5.3.3",

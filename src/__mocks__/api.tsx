@@ -11,12 +11,11 @@ export const loadImageList = async (): Promise<ImageData[]> => {
 
 export const loadPostList = async (): Promise<PostData[]> => {
   // TODO
-  return Promise.reject();
+  return Promise.reject("unimplemented");
 };
 
 export const loadCurrentPost = async (): Promise<PostData> => {
-  // TODO
-  return Promise.reject();
+  return { id: "1", timestamp: "blarg", image: "image" };
 };
 
 const sleep = (ms: number) => {
