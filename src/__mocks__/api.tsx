@@ -9,13 +9,13 @@ export const loadImageList = async (): Promise<ImageData[]> => {
   return data;
 };
 
-export const loadPostList = async (): Promise<PostData[]> => {
+export const loadPostList = (): Promise<PostData[]> => {
   // TODO
   return Promise.reject("unimplemented");
 };
 
-export const loadCurrentPost = async (): Promise<PostData> => {
-  return { id: "1", timestamp: "blarg", image: "image" };
+export const loadCurrentPost = (): Promise<PostData> => {
+  return Promise.resolve({ id: "1", timestamp: "blarg", image: "image" });
 };
 
 const sleep = (ms: number) => {

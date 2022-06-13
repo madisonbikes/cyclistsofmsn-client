@@ -1,4 +1,3 @@
-**/*.test.ts
 **/*.css
 **/*.svg
 node_modules
