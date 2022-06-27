@@ -24,8 +24,7 @@ export const Profile = () => {
       }
     };
 
-    // noinspection JSIgnoredPromiseFromCall
-    executePost();
+    void executePost();
   }, [getAccessTokenSilently]);
 
   if (isLoading) {

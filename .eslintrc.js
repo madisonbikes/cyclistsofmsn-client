@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     commonjs: true,
     es6: true,
@@ -22,6 +23,7 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 6,
+    project: "./tsconfig.json",
   },
   plugins: ["react", "@typescript-eslint", "no-autofix"],
   reportUnusedDisableDirectives: true,
@@ -30,5 +32,7 @@ module.exports = {
     "no-autofix/prefer-const": "error",
     eqeqeq: ["warn", "smart"],
     "func-style": ["warn"],
+    "require-await": ["error"],
+    "@typescript-eslint/no-floating-promises": "error",
   },
 };

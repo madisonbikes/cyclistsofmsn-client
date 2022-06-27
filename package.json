@@ -5,8 +5,8 @@
   "proxy": "http://localhost:3001",
   "dependencies": {
     "@auth0/auth0-react": "^1.10.1",
-    "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
     "@fontsource/roboto": "^4.5.7",
     "@mui/material": "^5.8.3",
     "@testing-library/react": "^13.3.0",
@@ -30,7 +30,8 @@
     "eject": "react-scripts eject",
     "check-package-updates": "npx npm-check-updates",
     "lint": "eslint 'src/**'",
-    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache"
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -45,18 +46,21 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@testing-library/jest-dom": "^5.16.4",
-    "@tsconfig/node16": "^1.0.2",
+    "@tsconfig/node16": "^1.0.3",
     "@types/random-number-csprng": "^1.0.0",
     "@types/react-router-dom": "^5.3.3",
-    "@typescript-eslint/eslint-plugin": "^5.27.1",
-    "@typescript-eslint/parser": "^5.27.1",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-no-autofix": "^1.2.3",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "husky": "^8.0.1",
     "prettier": "2.6.2",
-    "ts-jest": "^28.0.4"
+    "ts-jest": "^28.0.5"
   }
 }
