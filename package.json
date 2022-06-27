@@ -33,6 +33,7 @@
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "prepare": "husky install"
   },
+  "jest": {},
   "browserslist": {
     "production": [
       ">0.2%",
