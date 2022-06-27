@@ -30,7 +30,8 @@
     "eject": "react-scripts eject",
     "check-package-updates": "npx npm-check-updates",
     "lint": "eslint 'src/**'",
-    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache"
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -45,6 +46,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@tsconfig/node16": "^1.0.2",
     "@types/random-number-csprng": "^1.0.0",
@@ -56,6 +59,7 @@
     "eslint-plugin-no-autofix": "^1.2.3",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "husky": "^8.0.1",
     "prettier": "2.6.2",
     "ts-jest": "^28.0.4"
   }
