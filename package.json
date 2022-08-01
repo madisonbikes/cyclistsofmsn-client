@@ -6,7 +6,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.10.2",
     "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
+    "@emotion/styled": "^11.10.0",
     "@fontsource/roboto": "^4.5.7",
     "@mui/material": "^5.8.7",
     "@testing-library/react": "^13.3.0",
