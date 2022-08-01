@@ -6,16 +6,16 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.10.2",
     "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
+    "@emotion/styled": "^11.10.0",
     "@fontsource/roboto": "^4.5.7",
-    "@mui/material": "^5.8.7",
+    "@mui/material": "^5.9.2",
     "@testing-library/react": "^13.3.0",
-    "@types/jest": "^28.1.4",
+    "@types/jest": "^28.1.6",
     "@types/node": "^17.0.45",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
     "axios": "^0.27.2",
-    "date-fns": "^2.28.0",
+    "date-fns": "^2.29.1",
     "random-number-csprng": "^1.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -54,7 +54,7 @@
     "@types/random-number-csprng": "^1.0.0",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
+    "@typescript-eslint/parser": "^5.32.0",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-no-autofix": "^1.2.3",
@@ -62,6 +62,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.1",
     "prettier": "2.7.1",
-    "ts-jest": "^28.0.5"
+    "ts-jest": "^28.0.7"
   }
 }
