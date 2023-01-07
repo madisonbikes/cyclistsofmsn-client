@@ -6,8 +6,9 @@
 name: Deploy to web server
 on:
   push:
-    branches: [main]
-  workflow_dispatch: // on demand
+    branches: ["main"]
+
+  workflow_dispatch: // run manually
 
 jobs:
   build:
