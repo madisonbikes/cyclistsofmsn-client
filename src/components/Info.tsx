@@ -10,7 +10,6 @@ export const Info = () => {
         <>
           <ul>
             <li>Authenticated</li>
-            <li>authenticated: {auth.state.authenticated}</li>
           </ul>
         </>
       ) : (
