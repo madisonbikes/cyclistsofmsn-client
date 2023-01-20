@@ -1,22 +1,26 @@
-import "./index.css";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { App } from "./App";
-import "@fontsource/roboto";
-import { Auth0Provider } from "@auth0/auth0-react";
-import { createRoot } from "react-dom/client";
-import { StrictMode } from "react";
+import { AuthProvider, theme } from "./common";
+import { ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-const container = document.getElementById("root");
-const root = createRoot(container as Element);
+const queryClient = new QueryClient();
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+
 root.render(
-  <StrictMode>
-    <Auth0Provider
-      domain="db122.us.auth0.com"
-      clientId="h9L21cuV9NtpRaeWkncuEhhEHCwq6E8e"
-      redirectUri={window.location.origin}
-      audience={"https://cyclists_of_msn/api"}
-      scope={"create:post"}
-    >
-      <App />
-    </Auth0Provider>
-  </StrictMode>
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </QueryClientProvider>
+    </React.StrictMode>
+  </ThemeProvider>
 );

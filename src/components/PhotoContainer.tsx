@@ -1,10 +1,7 @@
 import { Container, ButtonGroup, Link } from "@mui/material";
 import { CyclistPhoto } from "./CyclistPhoto";
-import { LoginButton } from "./LoginButton";
-import { LogoutButton } from "./LogoutButton";
 import { NextButton } from "./NextButton";
 import { PreviousButton } from "./PreviousButton";
-import { Profile } from "./Profile";
 import { RandomButton } from "./RandomButton";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -66,12 +63,7 @@ export const PhotoContainer = ({ photoId, timestamp }: Props) => {
           <RandomButton handleRandomPhoto={handleRandomPhoto} />
           <PreviousButton handlePreviousPhoto={handlePreviousPhoto} />
           <NextButton handleNextPhoto={handleNextPhoto} />
-          <LoginButton />
-          <LogoutButton />
         </ButtonGroup>
-      </div>
-      <div>
-        <Profile />
       </div>
     </Container>
   );

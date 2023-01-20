@@ -1,11 +1,7 @@
-import { get } from "../../config/api";
-import { AxiosResponse } from "axios";
+import { Request, get } from "superagent";
 
 export const Posts = {
-  index: (): Promise<AxiosResponse> =>
-    get("/posts"),
-  current: (): Promise<AxiosResponse> =>
-    get("/posts/current"),
-  single: (id: string): Promise<AxiosResponse> =>
-    get(`/posts/${id}`)
+  index: (): Request => get("/api/v1/posts"),
+  current: (): Request => get("/api/v1/posts/current"),
+  single: (id: string): Request => get(`/api/v1/posts/${id}`),
 };
