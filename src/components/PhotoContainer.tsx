@@ -1,9 +1,8 @@
-import { Container, ButtonGroup, Link } from "@mui/material";
+import { Container, ButtonGroup } from "@mui/material";
 import { CyclistPhoto } from "./CyclistPhoto";
 import { NextButton } from "./NextButton";
 import { PreviousButton } from "./PreviousButton";
 import { RandomButton } from "./RandomButton";
-import { Link as RouterLink } from "react-router-dom";
 
 type Props = {
   photoId: string | undefined;
@@ -46,18 +45,7 @@ export const PhotoContainer = ({ photoId, timestamp }: Props) => {
     <Container>
       <CyclistPhoto photoId={photoId} />
       <p>Cyclists of Madison on {timestamp?.toLocaleDateString()}</p>
-      <Link
-        href="https://twitter.com/cyclists_of_msn"
-        color="primary"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Twitter
-      </Link>
       <br />
-      <Link component={RouterLink} to="/posts">
-        Posts
-      </Link>
       <div>
         <ButtonGroup>
           <RandomButton handleRandomPhoto={handleRandomPhoto} />
