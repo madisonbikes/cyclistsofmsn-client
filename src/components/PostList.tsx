@@ -5,7 +5,6 @@ import { ListItem } from "@mui/material";
 
 export const PostList = () => {
   const [posts, setPosts] = useState<PostData[] | undefined>(undefined);
-
   useEffect(() => {
     // use flag to avoid setting state if component unmounts (unlikely)
     let abort = false;
@@ -44,7 +43,7 @@ const MyList = (posts: PostData[]) => {
         const parsedTimestamp = parseJSON(post.timestamp).toLocaleDateString();
         return (
           <ListItem key={post.id}>
-            <img src={`/images/${post.image}?height=64`} alt="cyclist" />
+            <img src={`/api/v1/images/${post.image}?height=64`} alt="cyclist" />
             {parsedTimestamp}
           </ListItem>
         );

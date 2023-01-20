@@ -13,10 +13,10 @@ export type PostData = {
 
 export const loadPostList = async (): Promise<PostData[]> => {
   const response = await Posts.index();
-  return response.data;
+  return response.body;
 };
 
 export const loadCurrentPost = async (): Promise<PostData> => {
   const response = await Posts.current();
-  return response.data;
+  return response.body;
 };
