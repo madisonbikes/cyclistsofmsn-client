@@ -1,49 +1,22 @@
-import { useEffect, useState } from "react";
 import { loadPostList, PostData } from "../api";
 import parseJSON from "date-fns/parseJSON";
 import { ListItem } from "@mui/material";
+import { useQuery } from "react-query";
 
 export const PostList = () => {
-  const [posts, setPosts] = useState<PostData[] | undefined>(undefined);
-  useEffect(() => {
-    // use flag to avoid setting state if component unmounts (unlikely)
-    let abort = false;
-
-    const load = async () => {
-      console.debug(`loading post list`);
-      const response = await loadPostList();
-      if (!abort) {
-        setPosts(response);
-      }
-    };
-
-    // resolve these promises just to satisfy eslint and render error in console
-    load()
-      .then(() => {
-        // do nothing
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-
-    // cleanup aborts load
-    return () => {
-      abort = true;
-    };
-  }, []);
-
-  if (!posts) return <></>;
-  return MyList(posts);
-};
-
-const MyList = (posts: PostData[]) => {
+  const { data, isLoading, isError, error } = useQuery<PostData[], Error>({
+    queryKey: "postList",
+    queryFn: () => loadPostList(),
+  });
+  if (isLoading) return <>Loading...</>;
+  if (isError) return <>An error has occurred {error.message}</>;
   return (
     <ul>
-      {posts.map((post) => {
+      {data?.map((post) => {
         const parsedTimestamp = parseJSON(post.timestamp).toLocaleDateString();
         return (
           <ListItem key={post.id}>
-            <img src={`/api/v1/images/${post.image}?height=64`} alt="cyclist" />
+            <img src={`/api/v1/images/${post.image}?width=96`} alt="cyclist" />
             {parsedTimestamp}
           </ListItem>
         );
