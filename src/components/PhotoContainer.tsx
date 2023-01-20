@@ -43,9 +43,10 @@ export const PhotoContainer = ({ photoId, timestamp }: Props) => {
   };
   return (
     <Container>
-      <CyclistPhoto photoId={photoId} />
-      <p>Cyclists of Madison on {timestamp?.toLocaleDateString()}</p>
-      <br />
+      <Container className="photoDate">
+        <CyclistPhoto photoId={photoId} />
+        <div className="photoDate">{timestamp?.toLocaleDateString()}</div>
+      </Container>
       <div>
         <ButtonGroup>
           <RandomButton handleRandomPhoto={handleRandomPhoto} />
