@@ -1,10 +1,10 @@
-import { loadPostList, PostData } from "../api";
-import parseJSON from "date-fns/parseJSON";
+import { loadPostList } from "../api/posts";
 import { ListItem } from "@mui/material";
 import { useQuery } from "react-query";
+import { Post } from "../api/contract/types";
 
 export const PostList = () => {
-  const { data, isLoading, isError, error } = useQuery<PostData[], Error>({
+  const { data, isLoading, isError, error } = useQuery<Post[], Error>({
     queryKey: "postList",
     queryFn: () => loadPostList(),
   });
@@ -13,11 +13,15 @@ export const PostList = () => {
   return (
     <ul>
       {data?.map((post) => {
-        const parsedTimestamp = parseJSON(post.timestamp).toLocaleDateString();
         return (
           <ListItem key={post.id}>
-            <img src={`/api/v1/images/${post.image}?width=96`} alt="cyclist" />
-            {parsedTimestamp}
+            <>
+              <img
+                src={`/api/v1/images/${post.imageid}?width=96`}
+                alt="cyclist"
+              />
+              {post.timestamp}
+            </>
           </ListItem>
         );
       })}

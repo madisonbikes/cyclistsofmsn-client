@@ -1,9 +1,8 @@
 import { post } from "superagent";
+import { z } from "zod";
+import { loginSchema } from "./contract/types";
 
-export type LoginRequest = {
-  username: string;
-  password: string;
-};
+export type LoginRequest = z.infer<typeof loginSchema>;
 
 export type LoginResponse = {
   success: boolean;

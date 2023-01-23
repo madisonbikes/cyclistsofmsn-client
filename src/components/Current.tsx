@@ -1,11 +1,12 @@
 import { CircularProgress, Container } from "@mui/material";
 import { parseJSON } from "date-fns";
-import { loadCurrentPost, PostData } from "../api";
+import { loadCurrentPost } from "../api/posts";
 import { PhotoContainer } from "./PhotoContainer";
 import { useQuery } from "react-query";
+import { Post } from "../api/contract/types";
 
 export const Current = () => {
-  const { data, error, isLoading, isError } = useQuery<PostData, Error>({
+  const { data, error, isLoading, isError } = useQuery<Post, Error>({
     queryKey: "currentPhoto",
     queryFn: () => loadCurrentPost(),
   });
@@ -18,7 +19,7 @@ export const Current = () => {
   }
   return (
     <PhotoContainer
-      photoId={data.image}
+      photoId={data.imageid}
       timestamp={parseJSON(data.timestamp)}
     />
   );
