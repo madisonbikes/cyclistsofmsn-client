@@ -1,11 +1,11 @@
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { PostList } from "./components/PostList";
 import "./styles.css";
-import Logout from "./components/Logout";
-import Info from "./components/Info";
-import Main from "./components/Main";
-import Login from "./components/forms/Login";
+import { PostList } from "./components/PostList";
+import { Logout } from "./components/Logout";
+import { Info } from "./components/Info";
+import { Main } from "./components/Main";
+import { Login } from "./components/forms/Login";
 import { Current } from "./components/Current";
 
 export const App = () => {

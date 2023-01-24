@@ -5,7 +5,7 @@ import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { login, LoginRequest, LoginResponse } from "../../api/login";
 import { useAuth } from "../../common";
-import FormTextField from "../input/FormTextField";
+import { FormTextField } from "../input/FormTextField";
 
 type LoginFormData = LoginRequest;
 
@@ -94,5 +94,3 @@ export const Login = () => {
     </main>
   );
 };
-
-export default Login;
