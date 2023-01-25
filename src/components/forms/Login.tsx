@@ -24,9 +24,9 @@ export const Login = () => {
   const { isSubmitting } = formState;
 
   useEffect(() => {
-    if (loginSuccess && data.success) {
+    if (loginSuccess && data.authenticated) {
       console.log("set auth");
-      auth.setState({ authenticated: true });
+      auth.setState(data);
       navigate("/");
     }
   }, [loginSuccess, data, auth, navigate]);

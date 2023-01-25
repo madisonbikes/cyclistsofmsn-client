@@ -3,7 +3,7 @@ import { parseJSON } from "date-fns";
 import { loadCurrentPost } from "../api/posts";
 import { PhotoContainer } from "./PhotoContainer";
 import { useQuery } from "react-query";
-import { Post } from "../api/contract/types";
+import { Post } from "../api/contract";
 
 export const Current = () => {
   const { data, error, isLoading, isError } = useQuery<Post, Error>({
