@@ -32,6 +32,14 @@ export const Main = () => {
         ) : null}
         {auth.state.authenticated ? (
           <>
+            <Link component={RouterLink} to="/images">
+              Images
+            </Link>
+            &nbsp;|&nbsp;
+          </>
+        ) : null}
+        {auth.state.authenticated ? (
+          <>
             <Link component={RouterLink} to="/logout">
               Logout
             </Link>

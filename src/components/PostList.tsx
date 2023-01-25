@@ -2,6 +2,7 @@ import { loadPostList } from "../api/posts";
 import { ListItem } from "@mui/material";
 import { useQuery } from "react-query";
 import { Post } from "../api/contract/types";
+import { formatISO } from "date-fns";
 
 export const PostList = () => {
   const { data, isLoading, isError, error } = useQuery<Post[], Error>({
@@ -20,7 +21,7 @@ export const PostList = () => {
                 src={`/api/v1/images/${post.imageid}?width=96`}
                 alt="cyclist"
               />
-              {post.timestamp}
+              {formatISO(post.timestamp)}
             </>
           </ListItem>
         );

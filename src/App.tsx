@@ -7,6 +7,7 @@ import { Info } from "./components/Info";
 import { Main } from "./components/Main";
 import { Login } from "./components/forms/Login";
 import { Current } from "./components/Current";
+import { ImageList } from "./components/ImageList";
 
 export const App = () => {
   return (
@@ -16,6 +17,9 @@ export const App = () => {
           <Route index element={<Current />} />
           <Route path="posts" element={<Outlet />}>
             <Route index element={<PostList />} />
+          </Route>
+          <Route path="images" element={<Outlet />}>
+            <Route index element={<ImageList />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="logout" element={<Logout />} />
