@@ -1,6 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import { LoginResponse } from "../api/login";
+import { sessionInfo } from "../api/sessioninfo";
 
-type AuthState = { authenticated: boolean };
+type AuthState = LoginResponse;
 
 export type AuthContextType = {
   state: AuthState;
@@ -23,6 +26,16 @@ type Props = {
 
 export const AuthProvider = (props: Props) => {
   const [state, setState] = useState<AuthState>({ authenticated: false });
+  const { data } = useQuery<AuthState, Error>({
+    queryKey: "sessionInfo",
+    queryFn: () => sessionInfo(),
+  });
+
+  useEffect(() => {
+    if (data) {
+      setState(data);
+    }
+  }, [data]);
 
   // temporary in case we want to track these changes
   const setStateInterceptor = (newState: AuthState): void => {

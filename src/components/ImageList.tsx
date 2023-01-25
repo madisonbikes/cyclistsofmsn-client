@@ -1,7 +1,7 @@
 import { loadImageList } from "../api/images";
 import { ListItem } from "@mui/material";
 import { useQuery } from "react-query";
-import { Image } from "../api/contract/types";
+import { Image } from "../api/contract";
 
 export const ImageList = () => {
   const { data, isLoading, isError, error } = useQuery<Image[], Error>({

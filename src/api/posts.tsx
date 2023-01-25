@@ -1,5 +1,4 @@
-import { Posts } from "./contract/Posts";
-import { postSchema } from "./contract/types";
+import { Posts, postSchema } from "./contract";
 
 export const loadPostList = async () => {
   const response = await Posts.index();

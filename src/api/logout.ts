@@ -5,13 +5,15 @@ export type LogoutResponse = {
 };
 
 export const logout = async (): Promise<LogoutResponse> => {
-  const result = await post("/api/v1/logout")
+  const response = await post("/api/v1/logout")
     .ok((res) => res.status === 200 || res.status === 400)
     .send();
 
-  if (result.status === 200) {
+  if (response.status === 200) {
+    console.log(`logout response: ${response.text}`);
     return { success: true };
   } else {
+    console.log(`logout response: ${response.text}`);
     return { success: false };
   }
 };

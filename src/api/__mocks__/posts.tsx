@@ -1,4 +1,4 @@
-import { Image, Post } from "../contract/types";
+import { Image, Post } from "../contract";
 
 /** mocks that make the tests deterministic */
 export const loadImageList = async (): Promise<Image[]> => {

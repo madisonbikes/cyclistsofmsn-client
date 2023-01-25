@@ -1,7 +1,7 @@
 import { loadPostList } from "../api/posts";
 import { ListItem } from "@mui/material";
 import { useQuery } from "react-query";
-import { Post } from "../api/contract/types";
+import { Post } from "../api/contract";
 import { formatISO } from "date-fns";
 
 export const PostList = () => {

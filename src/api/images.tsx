@@ -1,5 +1,4 @@
-import { Images } from "./contract/Images";
-import { imageSchema } from "./contract/types";
+import { Images, imageSchema } from "./contract";
 
 export const loadImageList = async () => {
   const response = await Images.index();
