@@ -1,24 +1,15 @@
+import { Images } from "../api/contract";
+
 type Props = {
   id: string | undefined;
   width?: number;
   height?: number;
 };
-export const RawImage = ({ id, width, height }: Props) => {
+export const RawImage = (props: Props) => {
+  const { id } = props;
   if (!id) {
     return <></>;
   }
-  const params = new URLSearchParams();
-  if (width) {
-    params.append("width", String(width));
-  }
-  if (height) {
-    params.append("height", String(height));
-  }
-
-  return (
-    <img
-      src={`/api/v1/images/${id}/binary?${params.toString()}`}
-      alt="cyclist"
-    />
-  );
+  const uri = Images.binaryUri(id, props);
+  return <img src={uri} alt="cyclist" />;
 };
