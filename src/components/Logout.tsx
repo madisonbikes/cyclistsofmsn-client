@@ -1,26 +1,39 @@
 import { Button } from "@mui/material";
+import { useEffect } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { logout, LogoutResponse } from "../api/logout";
+import { logout } from "../api/logout";
 import { useAuth } from "../common";
 
 export const Logout = () => {
   const auth = useAuth();
   const navigate = useNavigate();
 
-  const logoutMutation = useMutation<LogoutResponse, Error, unknown>(logout);
-
-  const handleLogout = () => {
+  const logoutMutation = useMutation(() => {
     console.log("clearing authentication");
     auth.setState({ authenticated: false });
-    logoutMutation.mutate(undefined);
-    navigate("/");
-  };
+    return logout();
+  });
+
+  const { isSuccess, isLoading } = logoutMutation;
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/");
+    }
+  }, [navigate, isSuccess]);
+
+  if (isLoading) {
+    return <div>Logging out...</div>;
+  }
 
   return (
     <main>
       <h2>Logout</h2>
-      <Button variant="contained" onClick={() => handleLogout()}>
+      <Button
+        variant="contained"
+        onClick={() => logoutMutation.mutate(undefined)}
+      >
         Logout
       </Button>
     </main>

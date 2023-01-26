@@ -29,7 +29,6 @@ export const AuthProvider = (props: Props) => {
   const { data } = useQuery({
     queryKey: "sessionInfo",
     queryFn: () => sessionInfo(),
-    useErrorBoundary: (error: Error) => true,
   });
 
   useEffect(() => {
