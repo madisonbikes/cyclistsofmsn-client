@@ -5,17 +5,13 @@ import { PhotoContainer } from "./PhotoContainer";
 import { useQuery } from "react-query";
 
 export const Current = () => {
-  const { data, error, isLoading, isError } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: "currentPhoto",
     queryFn: () => loadCurrentPost(),
-    useErrorBoundary: (error: Error) => true,
   });
 
   if (isLoading || !data) {
     return <Loading />;
-  }
-  if (isError) {
-    return <>Error {error.message}</>;
   }
   return (
     <PhotoContainer

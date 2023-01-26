@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { LoginRequest } from "../../api/contract";
-import { login, LoginResponse } from "../../api/login";
+import { login } from "../../api/login";
 import { useAuth } from "../../common";
 import { FormTextField } from "../input/FormTextField";
 
@@ -15,46 +15,48 @@ const defaultValues: LoginFormData = { username: "", password: "" };
 export const Login = () => {
   const auth = useAuth();
   const navigate = useNavigate();
-  const loginMutation = useMutation<LoginResponse, Error, LoginFormData>(login);
-  const { isSuccess: loginSuccess, data } = loginMutation;
 
-  const form = useForm<LoginFormData>({
+  const {
+    formState: { isSubmitting },
+    handleSubmit,
+    control,
+    reset,
+  } = useForm({
     defaultValues,
   });
-  const { formState, handleSubmit, control } = form;
-  const { isSubmitting } = formState;
+
+  const {
+    isSuccess: loginSuccess,
+    isLoading,
+    data: loginData,
+    mutate: loginMutate,
+  } = useMutation((credentials: LoginFormData) => {
+    reset(credentials);
+    return login(credentials);
+  });
 
   useEffect(() => {
-    if (loginSuccess && data.authenticated) {
+    if (loginSuccess && loginData.authenticated) {
       console.log("set auth");
-      auth.setState(data);
+      auth.setState(loginData);
       navigate("/");
     }
-  }, [loginSuccess, data, auth, navigate]);
+  }, [loginSuccess, loginData, auth, navigate]);
 
-  const onSubmit = (formData: LoginFormData) => {
-    loginMutation.mutate(formData);
-    form.reset(formData);
-  };
-
-  if (loginMutation.isLoading) {
+  if (isLoading) {
     return <div>Logging in...</div>;
-  }
-
-  if (loginMutation.isError) {
-    return <div>Error: {loginMutation.error.message}</div>;
   }
 
   return (
     <main>
       <h2>Login</h2>
-      {data?.failureString ? (
-        <div className="loginError">{data?.failureString}</div>
+      {loginData?.failureString ? (
+        <div className="loginError">{loginData?.failureString}</div>
       ) : null}
       <form
         onKeyDown={async (e) => {
           if (e.code === "Enter") {
-            await handleSubmit(onSubmit)();
+            await handleSubmit((data) => loginMutate(data))();
           }
         }}
       >
@@ -84,7 +86,7 @@ export const Login = () => {
           <Grid item>
             <Button
               disabled={isSubmitting}
-              onClick={handleSubmit(onSubmit)}
+              onClick={handleSubmit((data) => loginMutate(data))}
               variant="contained"
             >
               Login

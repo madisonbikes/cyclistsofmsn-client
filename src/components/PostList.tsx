@@ -5,13 +5,11 @@ import { formatISO } from "date-fns";
 import { RawImage } from "./RawImage";
 
 export const PostList = () => {
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: "postList",
     queryFn: () => loadPostList(),
-    useErrorBoundary: (error: Error) => true,
   });
   if (isLoading) return <>Loading...</>;
-  if (isError) return <>An error has occurred {error.message}</>;
   return (
     <ul>
       {data?.map((post) => {

@@ -9,15 +9,13 @@ import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateComm
 import { RawImage } from "./RawImage";
 
 export const ImageList = () => {
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: "imageList",
     queryFn: () => loadImageList(),
-    useErrorBoundary: (error: Error) => true,
   });
   const navigate = useNavigate();
 
   if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>An error has occurred {error.message}</div>;
 
   const onModifyClicked = (id: string) => {
     navigate(`/images/${id}`);
