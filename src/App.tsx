@@ -9,25 +9,29 @@ import { Login } from "./components/forms/Login";
 import { Current } from "./components/Current";
 import { ImageList } from "./components/ImageList";
 import { ImageDetail } from "./components/ImageDetail";
+import { ErrorBoundary } from "react-error-boundary";
+import { ErrorFallback } from "./common";
 
 export const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main />}>
-          <Route index element={<Current />} />
-          <Route path="posts" element={<Outlet />}>
-            <Route index element={<PostList />} />
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Routes>
+          <Route path="/" element={<Main />}>
+            <Route index element={<Current />} />
+            <Route path="posts" element={<Outlet />}>
+              <Route index element={<PostList />} />
+            </Route>
+            <Route path="images" element={<Outlet />}>
+              <Route index element={<ImageList />} />
+              <Route path=":id" element={<ImageDetail />} />
+            </Route>
+            <Route path="login" element={<Login />} />
+            <Route path="logout" element={<Logout />} />
+            <Route path="info" element={<Info />} />
           </Route>
-          <Route path="images" element={<Outlet />}>
-            <Route index element={<ImageList />} />
-            <Route path=":id" element={<ImageDetail />} />
-          </Route>
-          <Route path="login" element={<Login />} />
-          <Route path="logout" element={<Logout />} />
-          <Route path="info" element={<Info />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 };

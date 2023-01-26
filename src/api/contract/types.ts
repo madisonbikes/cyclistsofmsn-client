@@ -11,10 +11,16 @@ export const putImageQuerySchema = z.object({
 });
 export type PutImageQuery = z.infer<typeof putImageQuerySchema>;
 
-export const imageSchema = z.object({
+export const mutableImageSchema = z.object({
+  description: z.string().optional(),
+});
+export type MutableImage = z.infer<typeof mutableImageSchema>;
+
+export const imageSchema = mutableImageSchema.extend({
   id: z.coerce.string(),
   filename: z.string(),
-  description: z.string().optional(),
+  fs_timestamp: z.coerce.date(),
+  exif_createdon: z.coerce.date().optional(),
 });
 
 export type Image = z.infer<typeof imageSchema>;
@@ -42,6 +48,7 @@ export const loginBodySchema = z
     password: z.string(),
   })
   .strict();
+export type LoginRequest = z.infer<typeof loginBodySchema>;
 
 export const loginResponseSchema = z.object({
   username: z.string(),

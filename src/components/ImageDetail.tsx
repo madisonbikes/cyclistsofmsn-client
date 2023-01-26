@@ -8,7 +8,7 @@ export const ImageDetail = () => {
   }
   return (
     <>
-      <RawImage id={id} width={1024} />
+      <RawImage id={id} height={650} width={750} />
     </>
   );
 };
