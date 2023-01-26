@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { login, LoginRequest, LoginResponse } from "../../api/login";
+import { LoginRequest } from "../../api/contract";
+import { login, LoginResponse } from "../../api/login";
 import { useAuth } from "../../common";
 import { FormTextField } from "../input/FormTextField";
 

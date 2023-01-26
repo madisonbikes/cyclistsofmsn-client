@@ -16,6 +16,9 @@ export const RawImage = ({ id, width, height }: Props) => {
   }
 
   return (
-    <img src={`/api/v1/images/${id}?${params.toString()}`} alt="cyclist" />
+    <img
+      src={`/api/v1/images/${id}/binary?${params.toString()}`}
+      alt="cyclist"
+    />
   );
 };

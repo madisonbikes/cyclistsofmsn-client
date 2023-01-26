@@ -1,11 +1,11 @@
-import { post } from "superagent";
+import { Session } from "./contract";
 
 export type LogoutResponse = {
   success: boolean;
 };
 
 export const logout = async (): Promise<LogoutResponse> => {
-  const response = await post("/api/v1/logout")
+  const response = await Session.logout()
     .ok((res) => res.status === 200 || res.status === 400)
     .send();
 

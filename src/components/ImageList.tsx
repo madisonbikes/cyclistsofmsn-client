@@ -9,9 +9,10 @@ import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateComm
 import { RawImage } from "./RawImage";
 
 export const ImageList = () => {
-  const { data, isLoading, isError, error } = useQuery<Image[], Error>({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: "imageList",
     queryFn: () => loadImageList(),
+    useErrorBoundary: (error: Error) => true,
   });
   const navigate = useNavigate();
 
@@ -34,7 +35,7 @@ export const ImageList = () => {
       width: 108,
       renderCell: (params: GridRenderCellParams<Image>) => (
         <Link component={RouterLink} to={`/images/${params.id}`}>
-          <RawImage id={String(params.id)} width={96} />
+          <RawImage id={String(params.id)} width={96} height={72} />
         </Link>
       ),
     },
@@ -54,6 +55,7 @@ export const ImageList = () => {
   ];
   const initialState: GridInitialStateCommunity = {
     columns: { columnVisibilityModel: { id: false } },
+    pagination: { pageSize: 25 },
   };
 
   return (

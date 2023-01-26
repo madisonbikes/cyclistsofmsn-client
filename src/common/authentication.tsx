@@ -26,9 +26,10 @@ type Props = {
 
 export const AuthProvider = (props: Props) => {
   const [state, setState] = useState<AuthState>({ authenticated: false });
-  const { data } = useQuery<AuthState, Error>({
+  const { data } = useQuery({
     queryKey: "sessionInfo",
     queryFn: () => sessionInfo(),
+    useErrorBoundary: (error: Error) => true,
   });
 
   useEffect(() => {

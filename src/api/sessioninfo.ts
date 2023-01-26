@@ -1,11 +1,10 @@
-import { get } from "superagent";
-import { loginResponseSchema } from "./contract";
+import { loginResponseSchema, Session } from "./contract";
 import { LoginResponse } from "./login";
 
 export type SessionInfoResponse = LoginResponse;
 
 export const sessionInfo = async (): Promise<SessionInfoResponse> => {
-  const response = await get("/api/v1/sessioninfo")
+  const response = await Session.info()
     .ok((res) => res.status === 200 || res.status === 401)
     .send();
 

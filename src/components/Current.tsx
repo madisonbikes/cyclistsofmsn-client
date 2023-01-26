@@ -3,12 +3,12 @@ import { parseJSON } from "date-fns";
 import { loadCurrentPost } from "../api/posts";
 import { PhotoContainer } from "./PhotoContainer";
 import { useQuery } from "react-query";
-import { Post } from "../api/contract";
 
 export const Current = () => {
-  const { data, error, isLoading, isError } = useQuery<Post, Error>({
+  const { data, error, isLoading, isError } = useQuery({
     queryKey: "currentPhoto",
     queryFn: () => loadCurrentPost(),
+    useErrorBoundary: (error: Error) => true,
   });
 
   if (isLoading || !data) {
