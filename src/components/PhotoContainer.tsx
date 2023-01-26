@@ -1,8 +1,8 @@
 import { Container, ButtonGroup } from "@mui/material";
-import { CyclistPhoto } from "./CyclistPhoto";
 import { NextButton } from "./NextButton";
 import { PreviousButton } from "./PreviousButton";
 import { RandomButton } from "./RandomButton";
+import { RawImage } from "./RawImage";
 
 type Props = {
   photoId: string | undefined;
@@ -44,7 +44,7 @@ export const PhotoContainer = ({ photoId, timestamp }: Props) => {
   return (
     <Container>
       <Container className="photoDate">
-        <CyclistPhoto photoId={photoId} />
+        <RawImage id={photoId} height={512} />
         <div className="photoDate">{timestamp?.toLocaleDateString()}</div>
       </Container>
       <div>
