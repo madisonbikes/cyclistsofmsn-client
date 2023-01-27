@@ -4,6 +4,7 @@ import {
   loginResponseSchema,
   LoginRequest,
   Session,
+  loginBodySchema,
 } from "./contract";
 
 const authenticationResultSchema = z.object({
@@ -14,8 +15,10 @@ type AuthenticationResult = z.infer<typeof authenticationResultSchema>;
 export type LoginResponse = Partial<AuthenticatedUser> & AuthenticationResult;
 
 export const login = async (request: LoginRequest): Promise<LoginResponse> => {
+  // don't leak any extra data
+  const parsed = loginBodySchema.parse(request);
   const response = await Session.login()
-    .send(request)
+    .send(parsed)
     .ok((res) => res.status === 200 || res.status === 401);
 
   if (response.status === 200) {

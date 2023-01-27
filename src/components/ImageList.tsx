@@ -1,16 +1,16 @@
-import { loadImageList } from "../api/images";
-import { IconButton, Link } from "@mui/material";
-import { useQuery } from "react-query";
-import { Image } from "../api/contract";
-import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
-import { Edit } from "@mui/icons-material";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
+import { useQuery } from "react-query";
+import { IconButton, LinearProgress, Link } from "@mui/material";
+import { Edit } from "@mui/icons-material";
+import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateCommunity";
+import { loadImageList } from "../api/images";
 import { RawImage } from "./RawImage";
+import { Image } from "../api/contract";
 
 export const ImageList = () => {
-  const { data, isLoading } = useQuery({
-    queryKey: "imageList",
+  const { data, isLoading, isRefetching } = useQuery({
+    queryKey: ["images"],
     queryFn: () => loadImageList(),
   });
   const navigate = useNavigate();
@@ -58,6 +58,11 @@ export const ImageList = () => {
 
   return (
     <>
+      {isRefetching ? (
+        <LinearProgress variant="determinate" value={0} />
+      ) : (
+        <LinearProgress variant="determinate" value={100} />
+      )}
       <h2>Images</h2>
       <div
         style={{

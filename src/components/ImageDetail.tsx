@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { ImageEdit } from "./forms/ImageEdit";
 import { RawImage } from "./RawImage";
 
 export const ImageDetail = () => {
@@ -8,7 +9,12 @@ export const ImageDetail = () => {
   }
   return (
     <>
-      <RawImage id={id} height={650} width={750} />
+      <div>
+        <RawImage id={id} height={400} width={300} />
+      </div>
+      <div>
+        <ImageEdit id={id} />
+      </div>
     </>
   );
 };
