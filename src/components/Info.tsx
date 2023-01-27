@@ -9,7 +9,7 @@ export const Info = () => {
         <>
           <ul>
             <li>Username: {auth.state.username}</li>
-            <li>Admin: {auth.state.admin + ""}</li>
+            <li>Roles: {auth.state.roles + ""}</li>
           </ul>
         </>
       ) : (

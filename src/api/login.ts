@@ -1,10 +1,10 @@
 import { z } from "zod";
 import {
   AuthenticatedUser,
-  loginResponseSchema,
   LoginRequest,
   Session,
   loginBodySchema,
+  authenticatedUserSchema,
 } from "./contract";
 
 const authenticationResultSchema = z.object({
@@ -22,7 +22,7 @@ export const login = async (request: LoginRequest): Promise<LoginResponse> => {
     .ok((res) => res.status === 200 || res.status === 401);
 
   if (response.status === 200) {
-    const result = loginResponseSchema.parse(response.body);
+    const result = authenticatedUserSchema.parse(response.body);
     return { authenticated: true, ...result };
   } else {
     return {
