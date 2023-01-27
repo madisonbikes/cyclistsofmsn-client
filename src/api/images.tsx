@@ -1,4 +1,9 @@
-import { Images, imageSchema, MutableImage } from "./contract";
+import {
+  Images,
+  imageSchema,
+  MutableImage,
+  mutableImageSchema,
+} from "./contract";
 
 export const loadImageList = async () => {
   const response = await Images.index();
@@ -6,6 +11,13 @@ export const loadImageList = async () => {
 };
 
 export const putImageData = async (id: string, imageData: MutableImage) => {
-  const response = await Images.put(id).send(imageData);
-  return imageSchema.parse(response);
+  // parse the data to ensure we don't send a bunch of extra junk
+  const parsed = mutableImageSchema.parse(imageData);
+  const response = await Images.put(id).send(parsed);
+  return imageSchema.parse(response.body);
+};
+
+export const loadImageInfo = async (id: string) => {
+  const response = await Images.metadata(id);
+  return imageSchema.parse(response.body);
 };
