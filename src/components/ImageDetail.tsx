@@ -1,9 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ImageEdit } from "./forms/ImageEdit";
 import { RawImage } from "./RawImage";
 
 export const ImageDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   if (!id) {
     throw new Error("requires id param");
   }
@@ -13,7 +15,7 @@ export const ImageDetail = () => {
         <RawImage id={id} height={400} width={300} />
       </div>
       <div>
-        <ImageEdit id={id} />
+        <ImageEdit id={id} navigateUp={() => navigate("/images")} />
       </div>
     </>
   );

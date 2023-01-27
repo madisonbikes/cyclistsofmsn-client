@@ -2,7 +2,6 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { useNavigate } from "react-router-dom";
 import { MutableImage } from "../../api/contract";
 import { loadImageInfo, putImageData } from "../../api/images";
 import { ConfirmLoseChanges } from "../ConfirmLoseChanges";
@@ -10,12 +9,12 @@ import { FormTextField } from "../input/FormTextField";
 
 type Props = {
   id: string;
+  navigateUp: () => void;
 };
 
 const defaultValues: MutableImage = { description: "" };
 
-export const ImageEdit = ({ id }: Props) => {
-  const navigate = useNavigate();
+export const ImageEdit = ({ id, navigateUp }: Props) => {
   const queryClient = useQueryClient();
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
   const [showConfirmCancel, setShowConfirmCancel] = useState(false);
@@ -29,10 +28,8 @@ export const ImageEdit = ({ id }: Props) => {
     defaultValues,
   });
 
-  const { isSuccess, data: imageInfo } = useQuery(["images", id], async () => {
-    const data = await loadImageInfo(id);
-    console.log("loading image info " + JSON.stringify(data));
-    return data;
+  const { isSuccess, data: imageInfo } = useQuery(["images", id], () => {
+    return loadImageInfo(id);
   });
 
   const { mutate: mutateImageInfo, isSuccess: mutationSuccess } = useMutation(
@@ -49,7 +46,6 @@ export const ImageEdit = ({ id }: Props) => {
 
   useEffect(() => {
     if (isSuccess && !initialLoadComplete) {
-      console.log("populating image info " + JSON.stringify(imageInfo));
       reset(imageInfo);
       setInitialLoadComplete(true);
     }
@@ -57,9 +53,9 @@ export const ImageEdit = ({ id }: Props) => {
 
   useEffect(() => {
     if (mutationSuccess) {
-      navigate("/images");
+      navigateUp();
     }
-  }, [mutationSuccess, navigate]);
+  }, [mutationSuccess, navigateUp]);
 
   if (!initialLoadComplete) {
     return <>Loading...</>;
@@ -72,7 +68,7 @@ export const ImageEdit = ({ id }: Props) => {
           setShowConfirmCancel(false);
         }}
         onConfirm={() => {
-          navigate("/images");
+          navigateUp();
         }}
       />
       <form>
@@ -103,7 +99,7 @@ export const ImageEdit = ({ id }: Props) => {
           disabled={isSubmitting}
           onClick={() => {
             if (!isDirty) {
-              navigate("/images");
+              navigateUp();
             } else {
               setShowConfirmCancel(true);
             }
@@ -115,6 +111,4 @@ export const ImageEdit = ({ id }: Props) => {
       </form>
     </>
   );
-
-  return <></>;
 };

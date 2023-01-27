@@ -1,4 +1,4 @@
-import { loginResponseSchema, Session } from "./contract";
+import { authenticatedUserSchema, Session } from "./contract";
 import { LoginResponse } from "./login";
 
 export type SessionInfoResponse = LoginResponse;
@@ -9,7 +9,7 @@ export const sessionInfo = async (): Promise<SessionInfoResponse> => {
     .send();
 
   if (response.status === 200) {
-    const result = loginResponseSchema.parse(response.body);
+    const result = authenticatedUserSchema.parse(response.body);
     return { authenticated: true, ...result };
   } else {
     return { authenticated: false };
