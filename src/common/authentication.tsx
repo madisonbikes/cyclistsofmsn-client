@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import { LoginResponse } from "../api/login";
-import { sessionInfo } from "../api/sessioninfo";
+import { LoginResponse, sessionInfo } from "../api/session";
 
 type AuthState = LoginResponse;
 
