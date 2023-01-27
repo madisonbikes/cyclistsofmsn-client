@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { LoginRequest } from "../../api/contract";
-import { login } from "../../api/login";
+import { login } from "../../api/session";
 import { useAuth } from "../../common";
 import { FormTextField } from "../input/FormTextField";
 
