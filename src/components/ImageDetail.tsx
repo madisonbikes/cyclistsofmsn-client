@@ -15,7 +15,7 @@ export const ImageDetail = () => {
         <RawImage id={id} height={400} width={300} />
       </div>
       <div>
-        <ImageEdit id={id} navigateUp={() => navigate("/images")} />
+        <ImageEdit id={id} navigateUp={() => navigate(-1)} />
       </div>
     </>
   );

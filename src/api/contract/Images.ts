@@ -1,4 +1,4 @@
-import { Request, get, put } from "superagent";
+import { Request, get, put, del } from "superagent";
 import { GetImageQuery } from ".";
 
 const prefix = `/api/v1/images`;
@@ -26,4 +26,6 @@ export const Images = {
     get(Images.binaryUri(id, params)),
 
   put: (id: string): Request => put(`${prefix}/${id}`),
+
+  delete: (id: string): Request => del(`${prefix}/${id}`),
 };
