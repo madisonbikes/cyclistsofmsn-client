@@ -11,6 +11,7 @@ import { ImageList } from "./components/ImageList";
 import { ImageDetail } from "./components/ImageDetail";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "./common";
+import { PostDetail } from "./components/PostDetail";
 
 export const App = () => {
   return (
@@ -21,6 +22,7 @@ export const App = () => {
             <Route index element={<Current />} />
             <Route path="posts" element={<Outlet />}>
               <Route index element={<PostList />} />
+              <Route path=":id" element={<PostDetail />} />
             </Route>
             <Route path="images" element={<Outlet />}>
               <Route index element={<ImageList />} />

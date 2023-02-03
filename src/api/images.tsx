@@ -17,6 +17,11 @@ export const putImageData = async (id: string, imageData: MutableImage) => {
   return imageSchema.parse(response.body);
 };
 
+export const deleteImageData = async (id: string) => {
+  const response = await Images.delete(id);
+  return response.statusCode === 200;
+};
+
 export const loadImageInfo = async (id: string) => {
   const response = await Images.metadata(id);
   return imageSchema.parse(response.body);
