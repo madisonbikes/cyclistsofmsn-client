@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { MutableImage } from "../../api/contract";
+import { PutImageBody } from "../../api/contract";
 import { loadImageInfo, putImageData } from "../../api/images";
 import { ConfirmLoseChanges } from "../ConfirmLoseChanges";
 import { FormTextField } from "../input/FormTextField";
@@ -12,7 +12,7 @@ type Props = {
   navigateUp: () => void;
 };
 
-const defaultValues: MutableImage = { description: "" };
+const defaultValues: PutImageBody = { description: "" };
 
 export const ImageEdit = ({ id, navigateUp }: Props) => {
   const queryClient = useQueryClient();
@@ -33,7 +33,7 @@ export const ImageEdit = ({ id, navigateUp }: Props) => {
   });
 
   const { mutate: mutateImageInfo, isSuccess: mutationSuccess } = useMutation(
-    (imageInfo: MutableImage) => {
+    (imageInfo: PutImageBody) => {
       reset(imageInfo);
       return putImageData(id, imageInfo);
     },

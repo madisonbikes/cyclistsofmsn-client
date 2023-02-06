@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import {
-  MutablePost,
-  mutablePostSchema,
+  PutPostBody,
+  putPostBodySchema,
   postStatusFlagSchema,
 } from "../../api/contract";
 import { putPostData, useQueryPostInfo } from "../../api/posts";
@@ -16,7 +16,7 @@ type Props = {
   navigateUp: () => void;
 };
 
-const defaultValues: MutablePost = {
+const defaultValues: PutPostBody = {
   timestamp: new Date(),
   status: { flag: "pending" },
 };
@@ -36,10 +36,10 @@ export const PostEdit = ({ id, navigateUp }: Props) => {
   const { isSuccess, data: postInfo } = useQueryPostInfo(id);
 
   const { mutate: mutatePostInfo, isSuccess: mutationSuccess } = useMutation(
-    (postInfo: MutablePost) => {
+    (postInfo: PutPostBody) => {
       console.log(`reset (mutate): ${JSON.stringify(postInfo)}`);
       reset(postInfo);
-      const sendData = mutablePostSchema.parse(postInfo);
+      const sendData = putPostBodySchema.parse(postInfo);
       return putPostData(id, sendData);
     },
     {

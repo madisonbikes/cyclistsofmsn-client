@@ -6,10 +6,12 @@ export const getImageQuerySchema = z.object({
 });
 export type GetImageQuery = z.infer<typeof getImageQuerySchema>;
 
-export const mutableImageSchema = z.object({
+const mutableImageSchema = z.object({
   description: z.string().optional(),
 });
-export type MutableImage = z.infer<typeof mutableImageSchema>;
+
+export const putImageBodySchema = mutableImageSchema.deepPartial();
+export type PutImageBody = z.infer<typeof putImageBodySchema>;
 
 export const imageSchema = mutableImageSchema.extend({
   id: z.coerce.string(),
@@ -32,17 +34,22 @@ export const postStatusSchema = z.object({
   uri: z.string().optional(),
 });
 
-export const mutablePostSchema = z.object({
+const mutablePostSchema = z.object({
   timestamp: z.coerce.date(),
   imageid: z.coerce.string().optional(),
   status: postStatusSchema,
 });
-export type MutablePost = z.infer<typeof mutablePostSchema>;
+
+export const putPostBodySchema = mutablePostSchema.deepPartial();
+export type PutPostBody = z.infer<typeof putPostBodySchema>;
 
 export const postSchema = mutablePostSchema.extend({
   id: z.coerce.string(),
 });
 export type Post = z.infer<typeof postSchema>;
+
+export const postListSchema = postSchema.array();
+export type PostList = z.infer<typeof postListSchema>;
 
 export const loginBodySchema = z
   .object({
