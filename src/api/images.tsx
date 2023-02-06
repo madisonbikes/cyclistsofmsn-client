@@ -1,8 +1,8 @@
 import {
   Images,
   imageSchema,
-  MutableImage,
-  mutableImageSchema,
+  PutImageBody,
+  putImageBodySchema,
 } from "./contract";
 
 export const loadImageList = async () => {
@@ -10,9 +10,9 @@ export const loadImageList = async () => {
   return imageSchema.array().parse(response.body);
 };
 
-export const putImageData = async (id: string, imageData: MutableImage) => {
+export const putImageData = async (id: string, imageData: PutImageBody) => {
   // parse the data to ensure we don't send a bunch of extra junk
-  const parsed = mutableImageSchema.parse(imageData);
+  const parsed = putImageBodySchema.parse(imageData);
   const response = await Images.put(id).send(parsed);
   return imageSchema.parse(response.body);
 };

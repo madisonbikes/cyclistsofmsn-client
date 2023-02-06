@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { MutablePost, mutablePostSchema, Posts, postSchema } from "./contract";
+import { PutPostBody, putPostBodySchema, Posts, postSchema } from "./contract";
 
 export const loadPostList = async () => {
   const response = await Posts.index();
@@ -11,9 +11,9 @@ export const loadCurrentPost = async () => {
   return postSchema.parse(response.body);
 };
 
-export const putPostData = async (id: string, postData: MutablePost) => {
+export const putPostData = async (id: string, postData: PutPostBody) => {
   // parse the data to ensure we don't send a bunch of extra junk
-  const parsed = mutablePostSchema.parse(postData);
+  const parsed = putPostBodySchema.parse(postData);
   const response = await Posts.put(id).send(parsed);
   return postSchema.parse(response.body);
 };
