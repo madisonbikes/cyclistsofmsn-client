@@ -33,11 +33,15 @@ export const PostList = () => {
       sortable: false,
       renderCell: (params) => {
         const imageId = params.row.imageid;
-        return (
-          <Link component={RouterLink} to={`/images/${imageId}`}>
-            <RawImage id={String(imageId)} width={96} height={72} />
-          </Link>
-        );
+        if (imageId === undefined) {
+          return <></>;
+        } else {
+          return (
+            <Link component={RouterLink} to={`/images/${imageId}`}>
+              <RawImage id={String(imageId)} width={96} height={72} />
+            </Link>
+          );
+        }
       },
     },
     {

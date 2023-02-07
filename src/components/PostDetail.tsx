@@ -11,14 +11,16 @@ export const PostDetail = () => {
     throw new Error("requires id param");
   }
   const { data, isLoading } = useQueryPostInfo(id);
-  if (isLoading) {
+  if (isLoading || data == null) {
     return <>Loading...</>;
   }
   return (
     <>
-      <div>
-        <RawImage id={data?.imageid} height={400} width={300} />
-      </div>
+      {data?.imageid ? (
+        <div>
+          <RawImage id={data?.imageid} height={400} width={300} />
+        </div>
+      ) : null}
       <div>
         <PostEdit id={id} navigateUp={() => navigate(-1)} />
       </div>
