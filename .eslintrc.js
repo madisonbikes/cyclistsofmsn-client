@@ -37,5 +37,6 @@ module.exports = {
     "require-await": ["error"],
     "@typescript-eslint/no-floating-promises": "error",
     "import/no-default-export": 2,
+    "@typescript-eslint/strict-boolean-expressions": "warn",
   },
 };
