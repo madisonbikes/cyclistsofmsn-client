@@ -10,11 +10,11 @@ export const Images = {
   binaryUri: (id: string, { height, width }: GetImageQuery = {}): string => {
     const qp = new URLSearchParams();
     let paramSupplied = false;
-    if (height) {
+    if (height !== undefined) {
       qp.append("height", String(height));
       paramSupplied = true;
     }
-    if (width) {
+    if (width !== undefined) {
       qp.append("width", String(width));
       paramSupplied = true;
     }

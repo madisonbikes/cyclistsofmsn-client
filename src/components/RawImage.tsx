@@ -7,7 +7,7 @@ type Props = {
 };
 export const RawImage = (props: Props) => {
   const { id } = props;
-  if (!id) {
+  if (id === undefined) {
     return <></>;
   }
   const uri = Images.binaryUri(id, props);
