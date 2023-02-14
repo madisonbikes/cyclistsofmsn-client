@@ -6,7 +6,7 @@ export const ImageDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  if (!id) {
+  if (id === undefined) {
     throw new Error("requires id param");
   }
   return (

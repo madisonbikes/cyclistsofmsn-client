@@ -47,16 +47,15 @@ export const Login = () => {
     return <div>Logging in...</div>;
   }
 
+  const failureString = loginData?.failureString ?? "";
   return (
     <main>
       <h2>Login</h2>
-      {loginData?.failureString ? (
-        <div className="loginError">{loginData?.failureString}</div>
-      ) : null}
+      {failureString ? <div className="loginError">{failureString}</div> : null}
       <form
         onKeyDown={async (e) => {
           if (e.code === "Enter") {
-            await handleSubmit((data) => loginMutate(data))();
+            await handleSubmit((submitData) => loginMutate(submitData))();
           }
         }}
       >
@@ -86,7 +85,7 @@ export const Login = () => {
           <Grid item>
             <Button
               disabled={isSubmitting}
-              onClick={handleSubmit((data) => loginMutate(data))}
+              onClick={handleSubmit((submitData) => loginMutate(submitData))}
               variant="contained"
             >
               Login

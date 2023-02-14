@@ -7,18 +7,19 @@ export const PostDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  if (!id) {
+  if (id === undefined) {
     throw new Error("requires id param");
   }
   const { data, isLoading } = useQueryPostInfo(id);
   if (isLoading || data == null) {
     return <>Loading...</>;
   }
+  const imageId = data.imageid ?? "";
   return (
     <>
-      {data?.imageid ? (
+      {imageId ? (
         <div>
-          <RawImage id={data?.imageid} height={400} width={300} />
+          <RawImage id={imageId} height={400} width={300} />
         </div>
       ) : null}
       <div>
