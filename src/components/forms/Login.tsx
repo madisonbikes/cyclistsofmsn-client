@@ -3,12 +3,12 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { LoginRequest } from "../../api/contract";
+import { LoginBody } from "../../api/contract";
 import { login } from "../../api/session";
 import { useAuth } from "../../common";
 import { FormTextField } from "../input/FormTextField";
 
-type LoginFormData = LoginRequest;
+type LoginFormData = LoginBody;
 
 const defaultValues: LoginFormData = { username: "", password: "" };
 

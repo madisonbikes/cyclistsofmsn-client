@@ -2,7 +2,7 @@ import {
   authenticatedUserSchema,
   Session,
   AuthenticatedUser,
-  LoginRequest,
+  LoginBody,
   loginBodySchema,
 } from "./contract";
 import { z } from "zod";
@@ -29,7 +29,7 @@ const authenticationResultSchema = z.object({
 type AuthenticationResult = z.infer<typeof authenticationResultSchema>;
 export type LoginResponse = Partial<AuthenticatedUser> & AuthenticationResult;
 
-export const login = async (request: LoginRequest): Promise<LoginResponse> => {
+export const login = async (request: LoginBody): Promise<LoginResponse> => {
   // don't leak any extra data
   const parsed = loginBodySchema.parse(request);
   const response = await Session.login()

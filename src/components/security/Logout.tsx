@@ -2,8 +2,8 @@ import { Button } from "@mui/material";
 import { useEffect } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../api/session";
-import { useAuth } from "../common";
+import { logout } from "../../api/session";
+import { useAuth } from "../../common";
 
 export const Logout = () => {
   const auth = useAuth();
