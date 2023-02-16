@@ -2,8 +2,8 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import "./styles.css";
 import { PostList } from "./components/PostList";
-import { Logout } from "./components/Logout";
-import { Info } from "./components/Info";
+import { Logout } from "./components/security/Logout";
+import { Info } from "./components/security/Info";
 import { Main } from "./components/Main";
 import { Login } from "./components/forms/Login";
 import { Current } from "./components/Current";
