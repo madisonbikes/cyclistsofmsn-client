@@ -30,9 +30,10 @@ jobs:
       - run: npm run build
       - run: npm run test --maxWorkers=50%
       - run: npm run lint
+
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
-        env:
+        with:
           SSH_PRIVATE_KEY: ${{ secrets.KEY }}
           ARGS: "-rltgoDzvO --delete"
           SOURCE: "build/"
