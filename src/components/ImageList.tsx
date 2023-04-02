@@ -67,7 +67,7 @@ export const ImageList = () => {
   ];
   const initialState: GridInitialStateCommunity = {
     columns: { columnVisibilityModel: { id: false } },
-    pagination: { pageSize: 25 },
+    pagination: { paginationModel: { pageSize: 25 } },
   };
 
   return (
