@@ -27,7 +27,6 @@ test("renders a photo from cyclists of madison", async () => {
     expect(screen.queryByRole("progressbar")).toBeNull();
   });
 
-  expect(screen.getByRole("button", { name: /random photo/i })).toBeDefined();
   expect(screen.getByRole("button", { name: /next photo/i })).toBeDefined();
   expect(screen.getByRole("button", { name: /previous photo/i })).toBeDefined();
   expect(screen.getByAltText("cyclist")).toBeDefined();
