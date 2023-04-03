@@ -19,7 +19,7 @@
     "random-number-csprng": "^1.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-error-boundary": "^3.1.4",
+    "react-error-boundary": "^4.0.2",
     "react-hook-form": "^7.42.1",
     "react-query": "^3.39.2",
     "react-router-dom": "^6.8.1",
