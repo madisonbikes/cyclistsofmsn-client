@@ -1,7 +1,6 @@
 import { Container, ButtonGroup } from "@mui/material";
 import { NextButton } from "./NextButton";
 import { PreviousButton } from "./PreviousButton";
-import { RandomButton } from "./RandomButton";
 import { RawImage } from "./RawImage";
 
 type Props = {
@@ -10,14 +9,6 @@ type Props = {
 };
 
 export const PhotoContainer = ({ photoId, timestamp }: Props) => {
-  const handleRandomPhoto = async () => {
-    /*
-    const ndx = await getNextRandomIndex(images.length);
-    setLoading(false);
-    setPhotoId(images[ndx].id);
-    */
-  };
-
   const handleNextPhoto = async () => {
     /*
     let ndx = images.findIndex((value) => value.id === photoId);
@@ -49,7 +40,6 @@ export const PhotoContainer = ({ photoId, timestamp }: Props) => {
       </Container>
       <div>
         <ButtonGroup>
-          <RandomButton handleRandomPhoto={handleRandomPhoto} />
           <PreviousButton handlePreviousPhoto={handlePreviousPhoto} />
           <NextButton handleNextPhoto={handleNextPhoto} />
         </ButtonGroup>

@@ -25,7 +25,10 @@ const loadPostInfo = async (id: string) => {
 };
 
 export const useQueryPostInfo = (id: string) => {
-  return useQuery(["posts", id], async () => {
-    return await loadPostInfo(id);
+  return useQuery({
+    queryKey: ["posts", id],
+    queryFn: async () => {
+      return await loadPostInfo(id);
+    },
   });
 };

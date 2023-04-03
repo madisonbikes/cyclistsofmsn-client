@@ -6,7 +6,7 @@ import { useQuery } from "react-query";
 
 export const Current = () => {
   const { data, isLoading } = useQuery({
-    queryKey: "currentPhoto",
+    queryKey: ["photos"],
     queryFn: () => loadCurrentPost(),
   });
 

@@ -30,9 +30,11 @@ export const Login = () => {
     isLoading,
     data: loginData,
     mutate: loginMutate,
-  } = useMutation((credentials: LoginFormData) => {
-    reset(credentials);
-    return login(credentials);
+  } = useMutation({
+    mutationFn: (credentials: LoginFormData) => {
+      reset(credentials);
+      return login(credentials);
+    },
   });
 
   useEffect(() => {

@@ -28,21 +28,22 @@ export const ImageEdit = ({ id, navigateUp }: Props) => {
     defaultValues,
   });
 
-  const { isSuccess, data: imageInfo } = useQuery(["images", id], () => {
-    return loadImageInfo(id);
+  const { isSuccess, data: imageInfo } = useQuery({
+    queryKey: ["images", id],
+    queryFn: () => {
+      return loadImageInfo(id);
+    },
   });
 
-  const { mutate: mutateImageInfo, isSuccess: mutationSuccess } = useMutation(
-    (imageInfo: PutImageBody) => {
+  const { mutate: mutateImageInfo, isSuccess: mutationSuccess } = useMutation({
+    mutationFn: (imageInfo: PutImageBody) => {
       reset(imageInfo);
       return putImageData(id, imageInfo);
     },
-    {
-      onSuccess: () => {
-        return queryClient.invalidateQueries("images");
-      },
-    }
-  );
+    onSuccess: () => {
+      return queryClient.invalidateQueries(["images"]);
+    },
+  });
 
   useEffect(() => {
     if (isSuccess && !initialLoadComplete) {

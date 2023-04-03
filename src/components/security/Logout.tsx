@@ -9,10 +9,12 @@ export const Logout = () => {
   const auth = useAuth();
   const navigate = useNavigate();
 
-  const logoutMutation = useMutation(() => {
-    console.log("clearing authentication");
-    auth.setState({ authenticated: false });
-    return logout();
+  const logoutMutation = useMutation({
+    mutationFn: () => {
+      console.log("clearing authentication");
+      auth.setState({ authenticated: false });
+      return logout();
+    },
   });
 
   const { isSuccess, isLoading } = logoutMutation;

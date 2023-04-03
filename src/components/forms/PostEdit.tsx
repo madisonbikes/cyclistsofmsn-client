@@ -35,19 +35,17 @@ export const PostEdit = ({ id, navigateUp }: Props) => {
 
   const { isSuccess, data: postInfo } = useQueryPostInfo(id);
 
-  const { mutate: mutatePostInfo, isSuccess: mutationSuccess } = useMutation(
-    (postInfo: PutPostBody) => {
+  const { mutate: mutatePostInfo, isSuccess: mutationSuccess } = useMutation({
+    mutationFn: (postInfo: PutPostBody) => {
       console.log(`reset (mutate): ${JSON.stringify(postInfo)}`);
       reset(postInfo);
       const sendData = putPostBodySchema.parse(postInfo);
       return putPostData(id, sendData);
     },
-    {
-      onSuccess: () => {
-        return queryClient.invalidateQueries(["posts"]);
-      },
-    }
-  );
+    onSuccess: () => {
+      return queryClient.invalidateQueries(["posts"]);
+    },
+  });
 
   useEffect(() => {
     if (isSuccess && !initialLoadComplete) {
