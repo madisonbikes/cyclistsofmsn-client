@@ -27,8 +27,25 @@ const loadPostInfo = async (id: string) => {
 export const useQueryPostInfo = (id: string) => {
   return useQuery({
     queryKey: ["posts", id],
-    queryFn: async () => {
-      return await loadPostInfo(id);
+    queryFn: () => {
+      return loadPostInfo(id);
     },
   });
 };
+
+export const useQueryPostList = () =>
+  useQuery({
+    queryKey: ["posts"],
+    queryFn: () => loadPostList(),
+  });
+
+export const useQueryPostListCompleted = () =>
+  useQuery({
+    queryKey: ["posts", { status: "complete" }],
+    queryFn: async () => {
+      const posts = await loadPostList();
+      return posts.filter(
+        (p) => p.status.flag === "complete" && p.imageid != null
+      );
+    },
+  });

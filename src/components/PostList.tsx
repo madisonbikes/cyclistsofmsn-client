@@ -1,6 +1,5 @@
-import { loadPostList } from "../api/posts";
+import { useQueryPostList } from "../api/posts";
 import { IconButton, LinearProgress, Link } from "@mui/material";
-import { useQuery } from "react-query";
 import { format } from "date-fns";
 import { RawImage } from "./RawImage";
 import { Post } from "../api/contract";
@@ -11,10 +10,7 @@ import { useNavigate, Link as RouterLink } from "react-router-dom";
 
 export const PostList = () => {
   const navigate = useNavigate();
-  const { data, isLoading, isRefetching } = useQuery({
-    queryKey: ["posts"],
-    queryFn: () => loadPostList(),
-  });
+  const { data, isLoading, isRefetching } = useQueryPostList();
   if (isLoading) return <>Loading...</>;
   if (!data) {
     throw new Error("data should always exist");
