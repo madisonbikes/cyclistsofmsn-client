@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useQueryPostInfo } from "../api/posts";
+import { useQueryPostInfo } from "../api/postQueries";
 import { PostEdit } from "./forms/PostEdit";
 import { RawImage } from "./RawImage";
 
