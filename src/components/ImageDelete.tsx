@@ -9,17 +9,15 @@ type DeleteImageProps = {
 export const DeleteImage = ({ imageId, onClose }: DeleteImageProps) => {
   const queryClient = useQueryClient();
 
-  const deleteMutation = useMutation(
-    async (id: string) => {
+  const deleteMutation = useMutation({
+    mutationFn: async (id: string) => {
       await deleteImageData(id);
       return id;
     },
-    {
-      onSuccess: (id: string) => {
-        return queryClient.invalidateQueries(["images"]);
-      },
-    }
-  );
+    onSuccess: (id: string) => {
+      return queryClient.invalidateQueries(["images"]);
+    },
+  });
   return (
     <ConfirmImageDelete
       open={imageId !== undefined}
