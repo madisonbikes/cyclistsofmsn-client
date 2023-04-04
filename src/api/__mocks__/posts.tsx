@@ -21,15 +21,33 @@ export const loadImageList = async () => {
 };
 
 export const loadPostList = (): Promise<Post[]> => {
-  // TODO
-  return Promise.reject("unimplemented");
+  return Promise.resolve([
+    {
+      id: "1",
+      imageid: "1",
+      timestamp: new Date(),
+      status: { flag: "complete" },
+    },
+    {
+      id: "2",
+      imageid: "1",
+      timestamp: new Date(),
+      status: { flag: "complete" },
+    },
+    {
+      id: "3",
+      imageid: "1",
+      timestamp: new Date(),
+      status: { flag: "complete" },
+    },
+  ]);
 };
 
 export const loadCurrentPost = (): Promise<Post> => {
   return Promise.resolve({
-    id: "1",
+    id: "3",
     timestamp: new Date(),
-    imageid: "image",
+    imageid: "1",
     status: { flag: "complete" },
   });
 };

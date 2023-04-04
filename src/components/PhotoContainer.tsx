@@ -2,7 +2,7 @@ import { Container, ButtonGroup } from "@mui/material";
 import { NextButton } from "./NextButton";
 import { PreviousButton } from "./PreviousButton";
 import { RawImage } from "./RawImage";
-import { useQueryPostListCompleted } from "../api/posts";
+import { useQueryPostListCompleted } from "../api/postQueries";
 import { useEffect, useState } from "react";
 
 type Props = {
@@ -32,13 +32,8 @@ export const PhotoContainer = ({ initialPostId }: Props) => {
     throw new Error("photoId should be defined");
   }
 
-  const previousButtonEnabled = () => {
-    return postIndex > 0;
-  };
-
-  const nextButtonEnabled = () => {
-    return postIndex < data.length - 1;
-  };
+  const nextButtonEnabled = postIndex !== -1 && postIndex < data.length - 1;
+  const previousButtonEnabled = postIndex > 0;
 
   const handlePreviousPhoto = () => {
     setPostIndex(postIndex - 1);
@@ -47,6 +42,7 @@ export const PhotoContainer = ({ initialPostId }: Props) => {
   const handleNextPhoto = () => {
     setPostIndex(postIndex + 1);
   };
+
   return (
     <Container>
       <Container className="photoDate">
@@ -55,10 +51,10 @@ export const PhotoContainer = ({ initialPostId }: Props) => {
       </Container>
       <div>
         <ButtonGroup>
-          {previousButtonEnabled() ? (
+          {previousButtonEnabled ? (
             <PreviousButton handlePreviousPhoto={handlePreviousPhoto} />
           ) : null}
-          {nextButtonEnabled() ? (
+          {nextButtonEnabled ? (
             <NextButton handleNextPhoto={handleNextPhoto} />
           ) : null}
         </ButtonGroup>

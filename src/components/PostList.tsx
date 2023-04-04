@@ -1,4 +1,4 @@
-import { useQueryPostList } from "../api/posts";
+import { useQueryPostList } from "../api/postQueries";
 import { IconButton, LinearProgress, Link } from "@mui/material";
 import { format } from "date-fns";
 import { RawImage } from "./RawImage";
