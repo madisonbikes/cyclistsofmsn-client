@@ -2,17 +2,23 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { PutImageBody } from "../../api/contract";
+import { putImageBodySchema } from "../../api/contract";
 import { loadImageInfo, putImageData } from "../../api/images";
 import { ConfirmLoseChanges } from "../ConfirmLoseChanges";
 import { FormTextField } from "../input/FormTextField";
+import { z } from "zod";
 
 type Props = {
   id: string;
   navigateUp: () => void;
 };
 
-const defaultValues: PutImageBody = { description: "" };
+const formDataSchema = putImageBodySchema.extend({
+  description: z.string().default(""),
+});
+type FormData = z.infer<typeof formDataSchema>;
+
+const defaultValues: FormData = { description: "" };
 
 export const ImageEdit = ({ id, navigateUp }: Props) => {
   const queryClient = useQueryClient();
@@ -36,7 +42,7 @@ export const ImageEdit = ({ id, navigateUp }: Props) => {
   });
 
   const { mutate: mutateImageInfo, isSuccess: mutationSuccess } = useMutation({
-    mutationFn: (imageInfo: PutImageBody) => {
+    mutationFn: (imageInfo: FormData) => {
       reset(imageInfo);
       return putImageData(id, imageInfo);
     },
@@ -47,7 +53,7 @@ export const ImageEdit = ({ id, navigateUp }: Props) => {
 
   useEffect(() => {
     if (isSuccess && !initialLoadComplete) {
-      reset(imageInfo);
+      reset(formDataSchema.parse(imageInfo));
       setInitialLoadComplete(true);
     }
   }, [isSuccess, initialLoadComplete, reset, imageInfo]);
@@ -76,8 +82,9 @@ export const ImageEdit = ({ id, navigateUp }: Props) => {
         <FormTextField
           control={control}
           name="description"
-          multiline={true}
+          multiline
           fullWidth
+          rows={3}
           required
           margin="normal"
           label="Description"

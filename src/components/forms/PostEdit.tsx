@@ -2,22 +2,23 @@ import { Button, MenuItem } from "@mui/material";
 import { useEffect, useState } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
-import {
-  PutPostBody,
-  putPostBodySchema,
-  postStatusFlagSchema,
-} from "../../api/contract";
+import { putPostBodySchema, postStatusFlagSchema } from "../../api/contract";
 import { putPostData, useQueryPostInfo } from "../../api/posts";
 import { ConfirmLoseChanges } from "../ConfirmLoseChanges";
 import { FormSelect } from "../input/FormSelect";
+import { z } from "zod";
 
 type Props = {
   id: string;
   navigateUp: () => void;
 };
 
-const defaultValues: PutPostBody = {
+const formDataSchema = putPostBodySchema;
+type FormData = z.infer<typeof formDataSchema>;
+
+const defaultValues: FormData = {
   timestamp: new Date(),
+  imageid: undefined,
   status: { flag: "pending" },
 };
 
@@ -36,11 +37,10 @@ export const PostEdit = ({ id, navigateUp }: Props) => {
   const { isSuccess, data: postInfo } = useQueryPostInfo(id);
 
   const { mutate: mutatePostInfo, isSuccess: mutationSuccess } = useMutation({
-    mutationFn: (postInfo: PutPostBody) => {
-      console.log(`reset (mutate): ${JSON.stringify(postInfo)}`);
-      reset(postInfo);
-      const sendData = putPostBodySchema.parse(postInfo);
-      return putPostData(id, sendData);
+    mutationFn: (mutated: FormData) => {
+      console.log(`reset (mutate): ${JSON.stringify(mutated)}`);
+      reset(mutated);
+      return putPostData(id, mutated);
     },
     onSuccess: () => {
       return queryClient.invalidateQueries(["posts"]);
@@ -49,8 +49,9 @@ export const PostEdit = ({ id, navigateUp }: Props) => {
 
   useEffect(() => {
     if (isSuccess && !initialLoadComplete) {
-      console.log(`reset (useEffect): ${JSON.stringify(postInfo)}`);
-      reset(postInfo);
+      const resetData = formDataSchema.parse(postInfo);
+      console.log(`reset (useEffect): ${JSON.stringify(resetData)}`);
+      reset(resetData);
       setInitialLoadComplete(true);
     }
   }, [isSuccess, initialLoadComplete, reset, postInfo]);
