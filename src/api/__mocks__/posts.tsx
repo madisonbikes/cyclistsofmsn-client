@@ -8,12 +8,14 @@ export const loadImageList = async () => {
       filename: "filename1",
       fs_timestamp: new Date(),
       description_from_exif: false,
+      hidden: false,
     },
     {
       id: "2",
       filename: "filename2",
       fs_timestamp: new Date(),
       description_from_exif: false,
+      hidden: false,
     },
   ];
   await sleep(250);

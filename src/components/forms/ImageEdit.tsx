@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, FormControlLabel } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "react-query";
@@ -7,6 +7,7 @@ import { loadImageInfo, putImageData } from "../../api/images";
 import { ConfirmLoseChanges } from "../ConfirmLoseChanges";
 import { FormTextField } from "../input/FormTextField";
 import { z } from "zod";
+import { FormCheckbox } from "../input/FormCheckbox";
 
 type Props = {
   id: string;
@@ -18,7 +19,7 @@ const formDataSchema = putImageBodySchema.extend({
 });
 type FormData = z.infer<typeof formDataSchema>;
 
-const defaultValues: FormData = { description: "" };
+const defaultValues: FormData = { description: "", hidden: false };
 
 export const ImageEdit = ({ id, navigateUp }: Props) => {
   const queryClient = useQueryClient();
@@ -90,7 +91,11 @@ export const ImageEdit = ({ id, navigateUp }: Props) => {
           label="Description"
         />
         <br />
-
+        <FormControlLabel
+          control={<FormCheckbox control={control} name="hidden" required />}
+          label="Hidden"
+        />
+        <br />
         <Button
           style={{ marginLeft: "5em" }}
           disabled={isSubmitting}
