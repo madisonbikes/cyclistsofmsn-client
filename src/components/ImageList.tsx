@@ -1,12 +1,16 @@
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { useQuery } from "react-query";
 import { IconButton, LinearProgress, Link } from "@mui/material";
-import { DeleteForever, Edit } from "@mui/icons-material";
-import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
+import { Check, DeleteForever, Edit } from "@mui/icons-material";
+import {
+  DataGrid,
+  GridColDef,
+  GridRenderCellParams,
+  GridValidRowModel,
+} from "@mui/x-data-grid";
 import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateCommunity";
 import { loadImageList } from "../api/images";
 import { RawImage } from "./RawImage";
-import { Image } from "../api/contract";
 import { useState } from "react";
 import { DeleteImage } from "./ImageDelete";
 
@@ -37,7 +41,7 @@ export const ImageList = () => {
       sortable: false,
       headerName: "Image",
       width: 108,
-      renderCell: (params: GridRenderCellParams<Image>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <Link component={RouterLink} to={`/images/${params.id}`}>
           <RawImage id={String(params.id)} width={96} height={72} />
         </Link>
@@ -46,10 +50,21 @@ export const ImageList = () => {
     { field: "filename", headerName: "Filename", width: 200 },
     { field: "description", headerName: "Description", width: 400 },
     {
+      field: "hidden",
+      headerName: "Exclude photo from posting pool",
+      width: 100,
+      renderCell: (
+        params: GridRenderCellParams<GridValidRowModel, boolean>
+      ) => {
+        if (params.value === true) return <Check />;
+        else return null;
+      },
+    },
+    {
       field: "buttons",
       sortable: false,
       headerName: "Ops",
-      renderCell: (params: GridRenderCellParams<Image>) => (
+      renderCell: (params: GridRenderCellParams) => (
         <>
           <IconButton onClick={() => onModifyClicked(params.row.id)}>
             <Edit />
