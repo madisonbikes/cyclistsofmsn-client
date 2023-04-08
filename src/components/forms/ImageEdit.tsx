@@ -93,7 +93,7 @@ export const ImageEdit = ({ id, navigateUp }: Props) => {
         <br />
         <FormControlLabel
           control={<FormCheckbox control={control} name="hidden" required />}
-          label="Hidden"
+          label="Hide photo from posting pool"
         />
         <br />
         <Button

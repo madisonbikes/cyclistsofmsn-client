@@ -51,7 +51,7 @@ export const ImageList = () => {
     { field: "description", headerName: "Description", width: 400 },
     {
       field: "hidden",
-      headerName: "Exclude photo from posting pool",
+      headerName: "Hidden",
       width: 100,
       renderCell: (
         params: GridRenderCellParams<GridValidRowModel, boolean>
