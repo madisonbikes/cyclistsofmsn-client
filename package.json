@@ -55,7 +55,7 @@
     "@types/jest": "^29.5.2",
     "@types/node": "^18.15.11",
     "@types/random-number-csprng": "^1.0.0",
-    "@types/react": "^18.2.8",
+    "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.4",
     "@types/react-router-dom": "^5.3.3",
     "@types/superagent": "^4.1.18",
