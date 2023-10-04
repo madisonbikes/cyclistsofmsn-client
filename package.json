@@ -51,7 +51,7 @@
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@testing-library/jest-dom": "^5.16.5",
-    "@tsconfig/create-react-app": "^1.0.3",
+    "@tsconfig/create-react-app": "^2.0.1",
     "@types/jest": "^29.5.4",
     "@types/node": "^18.18.3",
     "@types/random-number-csprng": "^1.0.0",
