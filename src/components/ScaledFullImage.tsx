@@ -1,5 +1,5 @@
 import { useImageInfo } from "../api/imageQueries";
-import { useWindowDimensions } from "../common/windowDimensions";
+import { useWindowDimensions } from "../common";
 import { RawImage } from "./RawImage";
 import { Image } from "../api/contract";
 
@@ -9,7 +9,6 @@ type Props = {
 export const ScaledFullImage = (props: Props) => {
   const { id } = props;
   const windowDimensions = useWindowDimensions();
-
   const { data: metadata, isLoading } = useImageInfo(id);
   if (id === undefined || metadata === undefined || isLoading) {
     return <></>;

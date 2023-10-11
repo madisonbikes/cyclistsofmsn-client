@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { App } from "./App";
 
 jest.mock("./api/posts");
+jest.mock("./api/images");
 jest.mock("./common", () => ({
   useAuth: () => {
     return {
@@ -12,6 +13,9 @@ jest.mock("./common", () => ({
       },
     };
   },
+  useWindowDimensions: () => {
+    return { width: 1000, height: 1000 };
+  },
 }));
 const queryClient = new QueryClient();
 
@@ -19,7 +23,7 @@ test("renders a photo from cyclists of madison", async () => {
   render(
     <QueryClientProvider client={queryClient}>
       <App />
-    </QueryClientProvider>
+    </QueryClientProvider>,
   );
 
   // waits for loading screen to pass
