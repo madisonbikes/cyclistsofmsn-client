@@ -1,9 +1,9 @@
 import { Container, ButtonGroup } from "@mui/material";
 import { NextButton } from "./NextButton";
 import { PreviousButton } from "./PreviousButton";
-import { RawImage } from "./RawImage";
 import { useQueryPostListCompleted } from "../api/postQueries";
 import { useEffect, useState } from "react";
+import { ScaledFullImage } from "./ScaledFullImage";
 
 type Props = {
   initialPostId: string;
@@ -46,7 +46,7 @@ export const PhotoContainer = ({ initialPostId }: Props) => {
   return (
     <Container>
       <Container className="photoDate">
-        <RawImage id={imageid} height={512} />
+        <ScaledFullImage id={imageid} />
         <div className="photoDate">{timestamp.toLocaleDateString()}</div>
       </Container>
       <div>

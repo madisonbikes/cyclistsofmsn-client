@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useQueryPostInfo } from "../api/postQueries";
 import { PostEdit } from "./forms/PostEdit";
-import { RawImage } from "./RawImage";
+import { ScaledFullImage } from "./ScaledFullImage";
 
 export const PostDetail = () => {
   const { id } = useParams();
@@ -10,18 +10,16 @@ export const PostDetail = () => {
   if (id === undefined) {
     throw new Error("requires id param");
   }
-  const { data, isLoading } = useQueryPostInfo(id);
-  if (isLoading || data == null) {
+  const { data: postInfo, isLoading } = useQueryPostInfo(id);
+  const imageId = postInfo?.imageid;
+  if (isLoading || imageId == null) {
     return <>Loading...</>;
   }
-  const imageId = data.imageid ?? "";
   return (
     <>
-      {imageId ? (
-        <div>
-          <RawImage id={imageId} height={400} width={300} />
-        </div>
-      ) : null}
+      <div>
+        <ScaledFullImage id={imageId} />
+      </div>
       <div>
         <PostEdit id={id} navigateUp={() => navigate(-1)} />
       </div>

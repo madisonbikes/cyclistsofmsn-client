@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { ImageEdit } from "./forms/ImageEdit";
-import { RawImage } from "./RawImage";
+import { ScaledFullImage } from "./ScaledFullImage";
 
 export const ImageDetail = () => {
   const { id } = useParams();
@@ -12,7 +12,7 @@ export const ImageDetail = () => {
   return (
     <>
       <div>
-        <RawImage id={id} height={400} width={300} />
+        <ScaledFullImage id={id} />
       </div>
       <div>
         <ImageEdit id={id} navigateUp={() => navigate(-1)} />

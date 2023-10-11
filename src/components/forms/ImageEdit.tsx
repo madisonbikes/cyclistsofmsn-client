@@ -1,13 +1,14 @@
 import { Button, FormControlLabel } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { putImageBodySchema } from "../../api/contract";
-import { loadImageInfo, putImageData } from "../../api/images";
+import { putImageData } from "../../api/images";
 import { ConfirmLoseChanges } from "../ConfirmLoseChanges";
 import { FormTextField } from "../input/FormTextField";
 import { z } from "zod";
 import { FormCheckbox } from "../input/FormCheckbox";
+import { useImageInfo } from "../../api/imageQueries";
 
 type Props = {
   id: string;
@@ -35,12 +36,7 @@ export const ImageEdit = ({ id, navigateUp }: Props) => {
     defaultValues,
   });
 
-  const { isSuccess, data: imageInfo } = useQuery({
-    queryKey: ["images", id],
-    queryFn: () => {
-      return loadImageInfo(id);
-    },
-  });
+  const { isSuccess, data: imageInfo } = useImageInfo(id);
 
   const { mutate: mutateImageInfo, isSuccess: mutationSuccess } = useMutation({
     mutationFn: (imageInfo: FormData) => {

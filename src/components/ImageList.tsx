@@ -1,5 +1,4 @@
 import { useNavigate, Link as RouterLink } from "react-router-dom";
-import { useQuery } from "react-query";
 import { IconButton, LinearProgress, Link } from "@mui/material";
 import { Check, DeleteForever, Edit } from "@mui/icons-material";
 import {
@@ -9,21 +8,18 @@ import {
   GridValidRowModel,
 } from "@mui/x-data-grid";
 import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateCommunity";
-import { loadImageList } from "../api/images";
 import { RawImage } from "./RawImage";
 import { useState } from "react";
 import { DeleteImage } from "./ImageDelete";
+import { useImageList } from "../api/imageQueries";
 
 export const ImageList = () => {
   const [deleteImageId, setDeleteImageId] = useState<string | undefined>(
-    undefined
+    undefined,
   );
   const navigate = useNavigate();
 
-  const { data, isLoading, isRefetching } = useQuery({
-    queryKey: ["images"],
-    queryFn: () => loadImageList(),
-  });
+  const { data, isLoading, isRefetching } = useImageList();
   if (isLoading) return <div>Loading...</div>;
 
   const onModifyClicked = (id: string) => {
@@ -54,7 +50,7 @@ export const ImageList = () => {
       headerName: "Hidden",
       width: 100,
       renderCell: (
-        params: GridRenderCellParams<GridValidRowModel, boolean>
+        params: GridRenderCellParams<GridValidRowModel, boolean>,
       ) => {
         if (params.value === true) return <Check />;
         else return null;
