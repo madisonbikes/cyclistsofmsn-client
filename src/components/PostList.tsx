@@ -69,6 +69,7 @@ export const PostList = () => {
   const initialState: GridInitialStateCommunity = {
     columns: { columnVisibilityModel: { id: false } },
     pagination: { paginationModel: { pageSize: 25 } },
+    sorting: { sortModel: [{ field: "timestamp", sort: "desc" }] },
   };
 
   return (
