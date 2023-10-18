@@ -14,7 +14,7 @@ export const DeleteImage = ({ imageId, onClose }: DeleteImageProps) => {
       await deleteImageData(id);
       return id;
     },
-    onSuccess: (id: string) => {
+    onSuccess: () => {
       return queryClient.invalidateQueries(["images"]);
     },
   });
