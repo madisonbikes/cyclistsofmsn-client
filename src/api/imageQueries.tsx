@@ -4,7 +4,7 @@ import { loadImageInfo, loadImageList } from "./images";
 export const useImageInfo = (id?: string) => {
   return useQuery({
     enabled: id !== undefined,
-    queryKey: ["image", id],
+    queryKey: ["images", id],
     queryFn: () => loadImageInfo(id ?? ""),
   });
 };

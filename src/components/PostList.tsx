@@ -1,12 +1,12 @@
 import { useQueryPostList } from "../api/postQueries";
 import { IconButton, LinearProgress, Link } from "@mui/material";
-import { format } from "date-fns";
 import { RawImage } from "./RawImage";
 import { Post } from "../api/contract";
 import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateCommunity";
 import { Edit } from "@mui/icons-material";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
+import { formatTimestamp } from "../common/date";
 
 export const PostList = () => {
   const navigate = useNavigate();
@@ -50,8 +50,7 @@ export const PostList = () => {
       field: "timestamp",
       headerName: "When",
       width: 250,
-      valueFormatter: (params) =>
-        format(params.value, "yyy-MM-dd HH:mm:ss zzzz"),
+      valueFormatter: (params) => formatTimestamp(params.value),
     },
     {
       field: "buttons",
