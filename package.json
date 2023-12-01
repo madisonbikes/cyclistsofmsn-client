@@ -52,7 +52,7 @@
     "@testing-library/react": "^14.0.0",
     "@tsconfig/vite-react": "^2.0.1",
     "@types/random-number-csprng": "^1.0.1",
-    "@types/react": "^18.2.34",
+    "@types/react": "^18.2.39",
     "@types/react-dom": "^18.2.14",
     "@types/react-router-dom": "^5.3.3",
     "@types/superagent": "^4.1.20",
