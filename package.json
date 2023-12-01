@@ -30,7 +30,7 @@
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.14.16",
     "@mui/material": "^5.14.16",
-    "@mui/x-data-grid": "^6.17.0",
+    "@mui/x-data-grid": "^6.18.2",
     "date-fns": "^2.30.0",
     "random-number-csprng": "^1.0.2",
     "react": "^18.2.0",
