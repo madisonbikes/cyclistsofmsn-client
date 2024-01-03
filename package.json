@@ -35,7 +35,7 @@
     "random-number-csprng": "^1.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-error-boundary": "^4.0.11",
+    "react-error-boundary": "^4.0.12",
     "react-hook-form": "^7.49.2",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.20.1",
