@@ -31,7 +31,7 @@
     "@mui/icons-material": "^5.15.2",
     "@mui/material": "^5.15.2",
     "@mui/x-data-grid": "^6.18.2",
-    "date-fns": "^2.30.0",
+    "date-fns": "^3.0.6",
     "random-number-csprng": "^1.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
