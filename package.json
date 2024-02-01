@@ -49,7 +49,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
-    "@testing-library/react": "^14.1.2",
+    "@testing-library/react": "^14.2.1",
     "@tsconfig/vite-react": "^3.0.0",
     "@types/random-number-csprng": "^1.0.2",
     "@types/react": "^18.2.46",
