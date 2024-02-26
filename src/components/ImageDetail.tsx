@@ -38,6 +38,7 @@ const ImageMetadataTable = ({ id }: ImageMetadataTableProps) => {
   type Metadata = { description: string; value: string };
 
   const rows = new Array<Metadata>();
+  rows.push({ description: "Filename", value: data.filename });
   if (data.exif_createdon != null) {
     rows.push({
       description: "Created On",
