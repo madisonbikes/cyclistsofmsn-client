@@ -1,5 +1,3 @@
-# In addition, it will deploy the built web app to a remote server via SSH.
-
 name: Deploy to web server
 on:
   workflow_dispatch:
