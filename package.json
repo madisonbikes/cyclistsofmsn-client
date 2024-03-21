@@ -9,7 +9,7 @@
     "test": "vitest",
     "check-package-updates": "npx npm-check-updates",
     "lint": "eslint .",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "jest": {},
   "browserslist": {
