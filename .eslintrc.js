@@ -31,10 +31,16 @@ module.exports = {
     "prefer-const": "off",
     "no-autofix/prefer-const": "error",
     eqeqeq: ["warn", "smart"],
-    "func-style": ["warn"],
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        checksVoidReturn: {
+          attributes: false,
+        },
+      },
+    ],
     "require-await": ["error"],
     "@typescript-eslint/no-floating-promises": "error",
-    "import/no-default-export": 2,
     "@typescript-eslint/strict-boolean-expressions": "warn",
   },
   settings: {
