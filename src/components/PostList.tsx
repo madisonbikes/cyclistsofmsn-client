@@ -1,7 +1,7 @@
 import { useQueryPostList } from "../api/postQueries";
 import { IconButton, LinearProgress, Link } from "@mui/material";
 import { RawImage } from "./RawImage";
-import { Post } from "../api/contract";
+import { Post, PostStatus } from "../api/contract";
 import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateCommunity";
 import { Edit } from "@mui/icons-material";
@@ -20,37 +20,37 @@ export const PostList = () => {
     navigate(`/posts/${id}`);
   };
 
-  const columns: GridColDef[] = [
+  const columns: GridColDef<Post>[] = [
     { field: "id", headerName: "ID", width: 240 },
     {
       field: "imageid",
       headerName: "Image",
       width: 108,
       sortable: false,
-      renderCell: (params) => {
-        const imageId = params.row.imageid;
+      renderCell: (params: GridRenderCellParams<Post, string>) => {
+        const imageId = params.value;
         if (imageId === undefined) {
           return <></>;
         } else {
           return (
             <Link component={RouterLink} to={`/images/${imageId}`}>
-              <RawImage id={String(imageId)} width={96} height={72} />
+              <RawImage id={imageId} width={96} height={72} />
             </Link>
           );
         }
       },
     },
     {
-      field: "flag",
+      field: "status",
       headerName: "Status",
       width: 100,
-      valueGetter: (params) => params.row.status.flag,
+      valueGetter: (value: PostStatus) => value.flag,
     },
     {
       field: "timestamp",
       headerName: "When",
       width: 250,
-      valueFormatter: (params) => formatTimestamp(params.value),
+      valueFormatter: (value: Date) => formatTimestamp(value),
     },
     {
       field: "buttons",
