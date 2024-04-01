@@ -9,7 +9,7 @@ export const Info = () => {
         <>
           <ul>
             <li>Username: {auth.state.username}</li>
-            <li>Roles: {auth.state.roles + ""}</li>
+            <li>Roles: {auth.state.roles?.toString()}</li>
           </ul>
         </>
       ) : (
