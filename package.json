@@ -46,7 +46,7 @@
     "@commitlint/config-conventional": "^19.0.3",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
-    "@tsconfig/vite-react": "^3.0.0",
+    "@tsconfig/vite-react": "^3.0.2",
     "@types/random-number-csprng": "^1.0.2",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
