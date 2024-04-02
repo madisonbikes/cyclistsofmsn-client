@@ -1,17 +1,13 @@
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { IconButton, LinearProgress, Link } from "@mui/material";
 import { Check, DeleteForever, Edit } from "@mui/icons-material";
-import {
-  DataGrid,
-  GridColDef,
-  GridRenderCellParams,
-  GridValidRowModel,
-} from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateCommunity";
 import { RawImage } from "./RawImage";
 import { useState } from "react";
 import { DeleteImage } from "./ImageDelete";
 import { useImageList } from "../api/imageQueries";
+import { Image } from "../api/contract";
 
 export const ImageList = () => {
   const [deleteImageId, setDeleteImageId] = useState<string | undefined>(
@@ -30,18 +26,21 @@ export const ImageList = () => {
     throw new Error("data should always exist");
   }
 
-  const columns: GridColDef[] = [
+  const columns: GridColDef<Image>[] = [
     { field: "id", headerName: "ID", width: 240 },
     {
       field: "image",
       sortable: false,
       headerName: "Image",
       width: 108,
-      renderCell: (params: GridRenderCellParams) => (
-        <Link component={RouterLink} to={`/images/${params.id}`}>
-          <RawImage id={String(params.id)} width={96} height={72} />
-        </Link>
-      ),
+      renderCell: (params: GridRenderCellParams<Image, string>) => {
+        const id = params.row.id;
+        return (
+          <Link component={RouterLink} to={`/images/${id}`}>
+            <RawImage id={id} width={96} height={72} />
+          </Link>
+        );
+      },
     },
     { field: "filename", headerName: "Filename", width: 200 },
     { field: "description", headerName: "Description", width: 400 },
@@ -49,9 +48,7 @@ export const ImageList = () => {
       field: "hidden",
       headerName: "Hidden",
       width: 100,
-      renderCell: (
-        params: GridRenderCellParams<GridValidRowModel, boolean>,
-      ) => {
+      renderCell: (params: GridRenderCellParams<Image, boolean>) => {
         if (params.value === true) return <Check />;
         else return null;
       },
@@ -60,7 +57,7 @@ export const ImageList = () => {
       field: "buttons",
       sortable: false,
       headerName: "Ops",
-      renderCell: (params: GridRenderCellParams) => (
+      renderCell: (params: GridRenderCellParams<Image>) => (
         <>
           <IconButton onClick={() => onModifyClicked(params.row.id)}>
             <Edit />
