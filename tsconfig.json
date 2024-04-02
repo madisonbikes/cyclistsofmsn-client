@@ -1,5 +1,6 @@
 {
   "extends": "@tsconfig/vite-react/tsconfig.json",
-  "compilerOptions": {},
-  "include": ["src"],
+  "compilerOptions": {
+    "types": ["vite/client", "vitest/globals"]
+  }
 }
