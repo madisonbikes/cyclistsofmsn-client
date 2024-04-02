@@ -1,11 +1,10 @@
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { App } from "./App";
-import { vi, describe, expect, it } from "vitest";
 
-vi.mock("./api/posts");
-vi.mock("./api/images");
-vi.mock("./common", () => ({
+vitest.mock("./api/posts");
+vitest.mock("./api/images");
+vitest.mock("./common", () => ({
   useAuth: () => {
     return {
       state: { authenticated: true },
