@@ -1,7 +1,13 @@
+import { useQueryInfo } from "../../api/info";
 import { useAuth } from "../../common";
 
 export const Info = () => {
   const auth = useAuth();
+  const { data: serverInfo, isLoading } = useQueryInfo();
+  if (isLoading) {
+    return <>Loading...</>;
+  }
+
   return (
     <main>
       <h2>Session Info</h2>
@@ -15,6 +21,11 @@ export const Info = () => {
       ) : (
         <>Unauthenticated</>
       )}
+      <h2>Version Info</h2>
+      <ul>
+        <li>Client: {__APP_VERSION__}</li>
+        <li>Server: {serverInfo?.version} </li>
+      </ul>
     </main>
   );
 };
