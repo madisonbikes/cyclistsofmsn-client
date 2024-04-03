@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/madisonbikes/cyclistsofmsn-client/compare/cyclistsofmsn-client-v1.0.0...cyclistsofmsn-client-v1.1.0) (2024-04-03)
+
+
+### Features
+
+* show versions in client ui ([302bf39](https://github.com/madisonbikes/cyclistsofmsn-client/commit/302bf39b312a6b548f3f383526425d66faf47306))
+
+
+### Bug Fixes
+
+* test failure due to global vitest import issue ([965249b](https://github.com/madisonbikes/cyclistsofmsn-client/commit/965249bbed16c90ccf1709eb618d163ef6b67f28))
+
 ## 1.0.0 (2024-04-02)
 
 
