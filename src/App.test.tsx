@@ -1,6 +1,7 @@
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { App } from "./App";
+import { vitest, it, describe, expect } from "vitest";
 
 vitest.mock("./api/posts");
 vitest.mock("./api/images");
