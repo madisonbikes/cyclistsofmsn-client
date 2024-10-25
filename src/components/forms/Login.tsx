@@ -1,4 +1,4 @@
-import { Button, Grid } from "@mui/material";
+import { Button, Grid2 as Grid } from "@mui/material";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
@@ -69,7 +69,7 @@ export const Login = () => {
           rowSpacing={2}
           alignItems="flex-start"
         >
-          <Grid item>
+          <Grid>
             <FormTextField
               name="username"
               label="Username"
@@ -77,7 +77,7 @@ export const Login = () => {
               control={control}
             />
           </Grid>
-          <Grid item>
+          <Grid>
             <FormTextField
               control={control}
               name="password"
@@ -86,7 +86,7 @@ export const Login = () => {
               type="password"
             />
           </Grid>
-          <Grid item>
+          <Grid>
             <Button
               disabled={isSubmitting}
               onClick={handleSubmit((submitData) => {
