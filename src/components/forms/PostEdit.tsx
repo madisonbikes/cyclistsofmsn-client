@@ -9,10 +9,10 @@ import { ConfirmLoseChanges } from "../ConfirmLoseChanges";
 import { FormSelect } from "../input/FormSelect";
 import { z } from "zod";
 
-type Props = {
+interface Props {
   id: string;
   navigateUp: () => void;
-};
+}
 
 const formDataSchema = putPostBodySchema;
 type FormData = z.infer<typeof formDataSchema>;

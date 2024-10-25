@@ -22,11 +22,11 @@ export const sessionInfo = async (): Promise<SessionInfoResponse> => {
   }
 };
 
-const authenticationResultSchema = z.object({
+const _authenticationResultSchema = z.object({
   authenticated: z.boolean(),
   failureString: z.string().optional(),
 });
-type AuthenticationResult = z.infer<typeof authenticationResultSchema>;
+type AuthenticationResult = z.infer<typeof _authenticationResultSchema>;
 export type LoginResponse = Partial<AuthenticatedUser> & AuthenticationResult;
 
 export const login = async (request: LoginBody): Promise<LoginResponse> => {
@@ -47,9 +47,9 @@ export const login = async (request: LoginBody): Promise<LoginResponse> => {
   }
 };
 
-export type LogoutResponse = {
+export interface LogoutResponse {
   success: boolean;
-};
+}
 
 export const logout = async (): Promise<LogoutResponse> => {
   const response = await Session.logout()

@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 
-type Props = {
+interface Props {
   open: boolean;
   onClose: () => void;
   onConfirm: () => void;
@@ -15,7 +15,7 @@ type Props = {
   description: string;
   confirmButtonText?: string;
   cancelButtonText?: string;
-};
+}
 
 export const BaseConfirmDelete = ({
   open,

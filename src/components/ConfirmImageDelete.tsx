@@ -1,10 +1,10 @@
 import { BaseConfirmDelete } from "./BaseConfirmDelete";
 
-type Props = {
+interface Props {
   open: boolean;
   onClose: () => void;
   onConfirm: () => void;
-};
+}
 
 export const ConfirmImageDelete = (props: Props) => {
   return (

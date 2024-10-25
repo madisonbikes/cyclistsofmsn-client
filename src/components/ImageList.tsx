@@ -59,7 +59,11 @@ export const ImageList = () => {
       headerName: "Ops",
       renderCell: (params: GridRenderCellParams<Image>) => (
         <>
-          <IconButton onClick={() => onModifyClicked(params.row.id)}>
+          <IconButton
+            onClick={() => {
+              onModifyClicked(params.row.id);
+            }}
+          >
             <Edit />
           </IconButton>
           <IconButton
@@ -101,7 +105,9 @@ export const ImageList = () => {
       </div>
       <DeleteImage
         imageId={deleteImageId}
-        onClose={() => setDeleteImageId(undefined)}
+        onClose={() => {
+          setDeleteImageId(undefined);
+        }}
       />
     </>
   );

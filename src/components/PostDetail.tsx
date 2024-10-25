@@ -21,7 +21,12 @@ export const PostDetail = () => {
         <ScaledFullImage id={imageId} />
       </div>
       <div>
-        <PostEdit id={id} navigateUp={() => navigate(-1)} />
+        <PostEdit
+          id={id}
+          navigateUp={() => {
+            navigate(-1);
+          }}
+        />
       </div>
     </>
   );

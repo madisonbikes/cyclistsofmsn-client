@@ -57,7 +57,9 @@ export const Login = () => {
       <form
         onKeyDown={async (e) => {
           if (e.code === "Enter") {
-            await handleSubmit((submitData) => loginMutate(submitData))();
+            await handleSubmit((submitData) => {
+              loginMutate(submitData);
+            })();
           }
         }}
       >
@@ -87,7 +89,9 @@ export const Login = () => {
           <Grid item>
             <Button
               disabled={isSubmitting}
-              onClick={handleSubmit((submitData) => loginMutate(submitData))}
+              onClick={handleSubmit((submitData) => {
+                loginMutate(submitData);
+              })}
               variant="contained"
             >
               Login

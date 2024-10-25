@@ -5,9 +5,9 @@ import { useQueryPostListCompleted } from "../api/postQueries";
 import { useEffect, useState } from "react";
 import { ScaledFullImage } from "./ScaledFullImage";
 
-type Props = {
+interface Props {
   initialPostId: string;
-};
+}
 
 export const PhotoContainer = ({ initialPostId }: Props) => {
   const { data, isLoading, isSuccess } = useQueryPostListCompleted();

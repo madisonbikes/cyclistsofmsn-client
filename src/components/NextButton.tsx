@@ -1,8 +1,8 @@
 import { Button } from "@mui/material";
 
-type Props = {
+interface Props {
   handleNextPhoto: () => void;
-};
+}
 
 export const NextButton = ({ handleNextPhoto }: Props) => {
   return (

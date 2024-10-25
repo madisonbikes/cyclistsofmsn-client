@@ -18,10 +18,11 @@ const queryClient = new QueryClient({
     },
   },
 });
-
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const rootElement = document.getElementById("root");
+if (rootElement == null) {
+  throw new Error("Root element not found");
+}
+const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   <ThemeProvider theme={theme}>
@@ -36,5 +37,5 @@ root.render(
         </QueryClientProvider>
       </ErrorBoundary>
     </React.StrictMode>
-  </ThemeProvider>
+  </ThemeProvider>,
 );

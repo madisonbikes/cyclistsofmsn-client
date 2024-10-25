@@ -3,14 +3,14 @@ import { useWindowDimensions } from "../common";
 import { RawImage } from "./RawImage";
 import { Image } from "../api/contract";
 
-type Props = {
+interface Props {
   id: string | undefined;
-};
+}
 export const ScaledFullImage = (props: Props) => {
   const { id } = props;
   const windowDimensions = useWindowDimensions();
   const { data: metadata, isLoading } = useImageInfo(id);
-  if (id === undefined || metadata === undefined || isLoading) {
+  if (id === undefined || metadata === undefined || (isLoading as boolean)) {
     return <></>;
   }
 

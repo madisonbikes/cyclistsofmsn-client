@@ -34,7 +34,9 @@ export const Logout = () => {
       <h2>Logout</h2>
       <Button
         variant="contained"
-        onClick={() => logoutMutation.mutate(undefined)}
+        onClick={() => {
+          logoutMutation.mutate(undefined);
+        }}
       >
         Logout
       </Button>

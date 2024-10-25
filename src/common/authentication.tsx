@@ -4,10 +4,10 @@ import { LoginResponse, sessionInfo } from "../api/session";
 
 type AuthState = LoginResponse;
 
-export type AuthContextType = {
+export interface AuthContextType {
   state: AuthState;
   setState: (newState: AuthState) => void;
-};
+}
 
 const AuthContext = React.createContext<AuthContextType | undefined>(undefined);
 
@@ -19,9 +19,9 @@ export const useAuth = (): AuthContextType => {
   return retval;
 };
 
-type Props = {
-  children: JSX.Element;
-};
+interface Props {
+  children: React.JSX.Element;
+}
 
 export const AuthProvider = (props: Props) => {
   const [state, setState] = useState<AuthState>({ authenticated: false });

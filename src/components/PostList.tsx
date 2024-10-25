@@ -58,7 +58,11 @@ export const PostList = () => {
       sortable: false,
       renderCell: (params: GridRenderCellParams<Post>) => (
         <>
-          <IconButton onClick={() => onModifyClicked(params.row.id)}>
+          <IconButton
+            onClick={() => {
+              onModifyClicked(params.row.id);
+            }}
+          >
             <Edit />
           </IconButton>
         </>

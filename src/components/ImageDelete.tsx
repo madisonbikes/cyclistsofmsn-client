@@ -2,10 +2,10 @@ import { useMutation, useQueryClient } from "react-query";
 import { deleteImageData } from "../api/images";
 import { ConfirmImageDelete } from "./ConfirmImageDelete";
 
-type DeleteImageProps = {
+interface DeleteImageProps {
   imageId: string | undefined;
   onClose: () => void;
-};
+}
 export const DeleteImage = ({ imageId, onClose }: DeleteImageProps) => {
   const queryClient = useQueryClient();
 

@@ -13,7 +13,7 @@ export const useQueryPostListCompleted = () =>
     queryFn: async () => {
       const posts = await loadPostList();
       return posts.filter(
-        (p) => p.status.flag === "complete" && p.imageid != null
+        (p) => p.status.flag === "complete" && p.imageid != null,
       );
     },
   });

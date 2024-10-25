@@ -23,19 +23,27 @@ export const ImageDetail = () => {
     <>
       <ScaledFullImage id={id} />
       <ImageMetadataTable id={id} />
-      <ImageEdit id={id} navigateUp={() => navigate(-1)} />
+      <ImageEdit
+        id={id}
+        navigateUp={() => {
+          navigate(-1);
+        }}
+      />
     </>
   );
 };
 
-type ImageMetadataTableProps = {
+interface ImageMetadataTableProps {
   id: string | undefined;
-};
+}
 const ImageMetadataTable = ({ id }: ImageMetadataTableProps) => {
   const { data, isLoading } = useImageInfo(id);
   if (isLoading || data == null) return <></>;
 
-  type Metadata = { description: string; value: string };
+  interface Metadata {
+    description: string;
+    value: string;
+  }
 
   const rows = new Array<Metadata>();
   rows.push({ description: "Filename", value: data.filename });

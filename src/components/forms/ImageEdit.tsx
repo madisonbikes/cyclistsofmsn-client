@@ -10,10 +10,10 @@ import { z } from "zod";
 import { FormCheckbox } from "../input/FormCheckbox";
 import { useImageInfo } from "../../api/imageQueries";
 
-type Props = {
+interface Props {
   id: string;
   navigateUp: () => void;
-};
+}
 
 const formDataSchema = putImageBodySchema.extend({
   description: z.string().default(""),
