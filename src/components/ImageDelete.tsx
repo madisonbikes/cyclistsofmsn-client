@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteImageData } from "../api/images";
 import { ConfirmImageDelete } from "./ConfirmImageDelete";
 
@@ -15,7 +15,7 @@ export const DeleteImage = ({ imageId, onClose }: DeleteImageProps) => {
       return id;
     },
     onSuccess: () => {
-      return queryClient.invalidateQueries(["images"]);
+      return queryClient.invalidateQueries({ queryKey: ["images"] });
     },
   });
   return (

@@ -1,7 +1,7 @@
 import { Button, Grid } from "@mui/material";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { LoginBody } from "../../api/contract";
 import { login } from "../../api/session";
@@ -27,7 +27,7 @@ export const Login = () => {
 
   const {
     isSuccess: loginSuccess,
-    isLoading,
+    isPending,
     data: loginData,
     mutate: loginMutate,
   } = useMutation({
@@ -45,7 +45,7 @@ export const Login = () => {
     }
   }, [loginSuccess, loginData, auth, navigate]);
 
-  if (isLoading) {
+  if (isPending) {
     return <div>Logging in...</div>;
   }
 

@@ -1,7 +1,7 @@
 import { Button, FormControlLabel } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { putImageBodySchema } from "../../api/contract";
 import { putImageData } from "../../api/images";
 import { ConfirmLoseChanges } from "../ConfirmLoseChanges";
@@ -44,7 +44,7 @@ export const ImageEdit = ({ id, navigateUp }: Props) => {
       return putImageData(id, imageInfo);
     },
     onSuccess: () => {
-      return queryClient.invalidateQueries(["images"]);
+      return queryClient.invalidateQueries({ queryKey: ["images"] });
     },
   });
 

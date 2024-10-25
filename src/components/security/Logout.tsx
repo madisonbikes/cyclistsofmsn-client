@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { useEffect } from "react";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../api/session";
 import { useAuth } from "../../common";
@@ -17,7 +17,7 @@ export const Logout = () => {
     },
   });
 
-  const { isSuccess, isLoading } = logoutMutation;
+  const { isSuccess, isPending } = logoutMutation;
 
   useEffect(() => {
     if (isSuccess) {
@@ -25,7 +25,7 @@ export const Logout = () => {
     }
   }, [navigate, isSuccess]);
 
-  if (isLoading) {
+  if (isPending) {
     return <div>Logging out...</div>;
   }
 

@@ -1,7 +1,7 @@
 import { Button, MenuItem } from "@mui/material";
 import { useEffect, useState } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { putPostBodySchema, postStatusFlagSchema } from "../../api/contract";
 import { putPostData } from "../../api/posts";
 import { useQueryPostInfo } from "../../api/postQueries";
@@ -44,7 +44,7 @@ export const PostEdit = ({ id, navigateUp }: Props) => {
       return putPostData(id, mutated);
     },
     onSuccess: () => {
-      return queryClient.invalidateQueries(["posts"]);
+      return queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
   });
 

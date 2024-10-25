@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { LoginResponse, sessionInfo } from "../api/session";
 
 type AuthState = LoginResponse;
@@ -26,7 +26,7 @@ interface Props {
 export const AuthProvider = (props: Props) => {
   const [state, setState] = useState<AuthState>({ authenticated: false });
   const { data } = useQuery({
-    queryKey: "sessionInfo",
+    queryKey: ["sessionInfo"],
     queryFn: () => sessionInfo(),
   });
 

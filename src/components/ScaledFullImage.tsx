@@ -10,6 +10,7 @@ export const ScaledFullImage = (props: Props) => {
   const { id } = props;
   const windowDimensions = useWindowDimensions();
   const { data: metadata, isLoading } = useImageInfo(id);
+  // FIXME isloading always false?
   if (id === undefined || metadata === undefined || (isLoading as boolean)) {
     return <></>;
   }

@@ -1,7 +1,7 @@
 import { CircularProgress, Container } from "@mui/material";
 import { loadCurrentPost } from "../api/posts";
 import { PhotoContainer } from "./PhotoContainer";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 export const Current = () => {
   const { data, isLoading } = useQuery({
