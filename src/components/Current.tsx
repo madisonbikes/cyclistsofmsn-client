@@ -11,6 +11,8 @@ export const Current = () => {
 
   if (isLoading || !data) {
     return <Loading />;
+  } else if (data.id == null) {
+    return <div>No completed posts</div>;
   }
   return <PhotoContainer initialPostId={data.id} />;
 };

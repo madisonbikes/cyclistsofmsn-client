@@ -7,7 +7,11 @@ export const loadPostList = async () => {
 
 export const loadCurrentPost = async () => {
   const response = await Posts.current();
-  return postSchema.parse(response.body);
+  if (response.statusCode === 404) {
+    return { id: undefined };
+  } else {
+    return postSchema.parse(response.body);
+  }
 };
 
 export const putPostData = async (id: string, postData: PutPostBody) => {
