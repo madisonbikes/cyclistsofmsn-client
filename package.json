@@ -45,7 +45,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@tsconfig/vite-react": "^3.0.2",
     "@types/random-number-csprng": "^1.0.2",
