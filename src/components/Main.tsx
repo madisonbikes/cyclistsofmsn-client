@@ -1,5 +1,5 @@
 import { Link } from "@mui/material";
-import { Outlet, Link as RouterLink } from "react-router-dom";
+import { Outlet, Link as RouterLink } from "react-router";
 import { useAuth } from "../common";
 import { Copyright } from "./Copyright";
 

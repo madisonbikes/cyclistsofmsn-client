@@ -2,7 +2,7 @@ import { Button, Grid2 as Grid } from "@mui/material";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { LoginBody } from "../../api/contract";
 import { login } from "../../api/session";
 import { useAuth } from "../../common";
@@ -41,7 +41,7 @@ export const Login = () => {
     if (loginSuccess && loginData.authenticated) {
       console.log("set auth");
       auth.setState(loginData);
-      navigate("/");
+      void navigate("/");
     }
   }, [loginSuccess, loginData, auth, navigate]);
 

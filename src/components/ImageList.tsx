@@ -1,4 +1,4 @@
-import { useNavigate, Link as RouterLink } from "react-router-dom";
+import { useNavigate, Link as RouterLink } from "react-router";
 import { IconButton, LinearProgress, Link } from "@mui/material";
 import { Check, DeleteForever, Edit } from "@mui/icons-material";
 import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
@@ -19,7 +19,7 @@ export const ImageList = () => {
   if (isLoading) return <div>Loading...</div>;
 
   const onModifyClicked = (id: string) => {
-    navigate(`/images/${id}`);
+    void navigate(`/images/${id}`);
   };
 
   if (!data) {

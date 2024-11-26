@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 import { ImageEdit } from "./forms/ImageEdit";
 import { ScaledFullImage } from "./ScaledFullImage";
 import {
@@ -25,8 +25,8 @@ export const ImageDetail = () => {
       <ImageMetadataTable id={id} />
       <ImageEdit
         id={id}
-        navigateUp={() => {
-          navigate(-1);
+        navigateUp={async () => {
+          await navigate(-1);
         }}
       />
     </>

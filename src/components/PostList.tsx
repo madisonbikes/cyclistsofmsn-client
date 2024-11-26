@@ -5,7 +5,7 @@ import { Post, PostStatus } from "../api/contract";
 import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateCommunity";
 import { Edit } from "@mui/icons-material";
-import { useNavigate, Link as RouterLink } from "react-router-dom";
+import { useNavigate, Link as RouterLink } from "react-router";
 import { formatTimestamp } from "../common/date";
 
 export const PostList = () => {
@@ -17,7 +17,7 @@ export const PostList = () => {
   }
 
   const onModifyClicked = (id: string) => {
-    navigate(`/posts/${id}`);
+    void navigate(`/posts/${id}`);
   };
 
   const columns: GridColDef<Post>[] = [

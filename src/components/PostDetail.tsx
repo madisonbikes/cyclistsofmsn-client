@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 import { useQueryPostInfo } from "../api/postQueries";
 import { PostEdit } from "./forms/PostEdit";
 import { ScaledFullImage } from "./ScaledFullImage";
@@ -24,7 +24,7 @@ export const PostDetail = () => {
         <PostEdit
           id={id}
           navigateUp={() => {
-            navigate(-1);
+            void navigate(-1);
           }}
         />
       </div>
