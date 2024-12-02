@@ -4,7 +4,7 @@ import { LoginResponse, sessionInfo } from "../api/session";
 
 type AuthState = LoginResponse;
 
-export interface AuthContextType {
+interface AuthContextType {
   state: AuthState;
   setState: (newState: AuthState) => void;
 }

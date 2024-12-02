@@ -7,7 +7,7 @@ import {
 } from "./contract";
 import { z } from "zod";
 
-export type SessionInfoResponse = LoginResponse;
+type SessionInfoResponse = LoginResponse;
 
 export const sessionInfo = async (): Promise<SessionInfoResponse> => {
   const response = await Session.info()
@@ -47,7 +47,7 @@ export const login = async (request: LoginBody): Promise<LoginResponse> => {
   }
 };
 
-export interface LogoutResponse {
+interface LogoutResponse {
   success: boolean;
 }
 
