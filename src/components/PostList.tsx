@@ -7,6 +7,7 @@ import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateComm
 import { Edit } from "@mui/icons-material";
 import { useNavigate, Link as RouterLink } from "react-router";
 import { formatTimestamp } from "../common/date";
+import { useImageInfo } from "../api/imageQueries";
 
 export const PostList = () => {
   const navigate = useNavigate();
@@ -51,6 +52,15 @@ export const PostList = () => {
       headerName: "When",
       width: 250,
       valueFormatter: (value: Date) => formatTimestamp(value),
+    },
+    {
+      field: "description",
+      headerName: "Description",
+      width: 400,
+      sortable: true,
+      renderCell: (params: GridRenderCellParams<Post>) => (
+        <ImageDescription id={params.row.imageid} />
+      ),
     },
     {
       field: "buttons",
@@ -98,4 +108,12 @@ export const PostList = () => {
       </div>
     </>
   );
+};
+
+const ImageDescription = ({ id }: { id: string | undefined }) => {
+  const imageInfo = useImageInfo(id);
+  if (imageInfo.isLoading || imageInfo.data?.description === undefined) {
+    return <></>;
+  }
+  return <>{imageInfo.data.description}</>;
 };
