@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.2.0](https://github.com/madisonbikes/cyclistsofmsn-client/compare/cyclistsofmsn-client-v1.1.1...cyclistsofmsn-client-v1.2.0) (2024-12-16)
+
+
+### Features
+
+* add image description to post list page ([fb04199](https://github.com/madisonbikes/cyclistsofmsn-client/commit/fb041994bd8f45111a34cae57f46e08a78b21264))
+
+
+### Bug Fixes
+
+* bump @emotion/react from 11.13.3 to 11.13.5 ([d0bad2f](https://github.com/madisonbikes/cyclistsofmsn-client/commit/d0bad2ff6b423573a9587b3b44ed783f67dd2ca0))
+* bump @emotion/styled from 11.13.0 to 11.13.5 ([7d21ea5](https://github.com/madisonbikes/cyclistsofmsn-client/commit/7d21ea56e32be5eb13de63e2a44540fb99f40ae4))
+* bump @mui/icons-material from 6.1.5 to 6.1.6 ([8c19032](https://github.com/madisonbikes/cyclistsofmsn-client/commit/8c19032ee8e65ff37d7e6a8cecc0f7882a36f54c))
+* bump @mui/icons-material from 6.1.6 to 6.1.9 ([257d03c](https://github.com/madisonbikes/cyclistsofmsn-client/commit/257d03c1263f4b8d98b7fffc6d82a590843b0e2d))
+* bump @mui/material from 6.1.5 to 6.1.6 ([4446281](https://github.com/madisonbikes/cyclistsofmsn-client/commit/4446281a096a1c3a0ee38036d42d16f0b3a166a7))
+* bump @mui/x-data-grid from 7.18.0 to 7.22.1 ([a5c1c86](https://github.com/madisonbikes/cyclistsofmsn-client/commit/a5c1c868dce7ef41a5b74a1eb956d35825e3e093))
+* bump @mui/x-data-grid from 7.22.1 to 7.23.0 ([400820a](https://github.com/madisonbikes/cyclistsofmsn-client/commit/400820ac522f95761783f64ae3a9fb1fe242fea0))
+* bump @tanstack/react-query from 5.59.16 to 5.62.0 ([f34d58c](https://github.com/madisonbikes/cyclistsofmsn-client/commit/f34d58cf82bcacee7ed50a5661e23003144b2d10))
+* bump @tanstack/react-query-devtools from 5.59.16 to 5.62.0 ([6a90706](https://github.com/madisonbikes/cyclistsofmsn-client/commit/6a907062442f6276fac213ca598ef20728822ec4))
+* bump react-error-boundary from 4.0.13 to 4.1.2 ([63962f8](https://github.com/madisonbikes/cyclistsofmsn-client/commit/63962f87352c281aeea90666a7b5376f88e26231))
+* bump react-hook-form from 7.53.0 to 7.53.1 ([ccc1982](https://github.com/madisonbikes/cyclistsofmsn-client/commit/ccc198244a081be865a526b27c323cf654d01d46))
+* bump react-hook-form from 7.53.1 to 7.53.2 ([dc8d526](https://github.com/madisonbikes/cyclistsofmsn-client/commit/dc8d5266f8f3f60b0cdd3dd568a5b819b9cf40c3))
+* bump react-router-dom from 6.26.2 to 6.27.0 ([02230d6](https://github.com/madisonbikes/cyclistsofmsn-client/commit/02230d6845e4f7700dca666ce0cd905042b39fad))
+* bump superagent from 10.1.0 to 10.1.1 ([74b7f88](https://github.com/madisonbikes/cyclistsofmsn-client/commit/74b7f882ac52c34c0c4a5f9e8e7aeda8f32e14be))
+
 ## [1.1.1](https://github.com/madisonbikes/cyclistsofmsn-client/compare/cyclistsofmsn-client-v1.1.0...cyclistsofmsn-client-v1.1.1) (2024-10-31)
 
 
