@@ -1,4 +1,4 @@
-import { Button, Grid2 as Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
@@ -21,9 +21,7 @@ export const Login = () => {
     handleSubmit,
     control,
     reset,
-  } = useForm({
-    defaultValues,
-  });
+  } = useForm({ defaultValues });
 
   const {
     isSuccess: loginSuccess,
