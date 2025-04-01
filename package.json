@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "vite",
-    "build": "tsc && vite build",
+    "compile": "tsc --build",
+    "build": "npm run compile && vite build",
     "serve": "vite preview",
     "test": "vitest",
     "check-package-updates": "npm-check-updates",
