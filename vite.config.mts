@@ -19,5 +19,7 @@ export default {
   test: {
     setupFiles: ["src/setupTests.ts"],
     environment: "jsdom",
+    // resolves https://stackoverflow.com/questions/78989267/vitest-unknown-file-extension-css
+    pool: "vmThreads",
   },
 } satisfies UserConfig;

@@ -1,8 +1,12 @@
 import { useNavigate, Link as RouterLink } from "react-router";
 import { IconButton, LinearProgress, Link } from "@mui/material";
 import { Check, DeleteForever, Edit } from "@mui/icons-material";
-import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
-import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateCommunity";
+import {
+  DataGrid,
+  GridColDef,
+  GridRenderCellParams,
+  GridInitialState,
+} from "@mui/x-data-grid";
 import { RawImage } from "./RawImage";
 import { useState } from "react";
 import { DeleteImage } from "./ImageDelete";
@@ -77,10 +81,10 @@ export const ImageList = () => {
       ),
     },
   ];
-  const initialState: GridInitialStateCommunity = {
+  const initialState = {
     columns: { columnVisibilityModel: { id: false } },
     pagination: { paginationModel: { pageSize: 25 } },
-  };
+  } satisfies GridInitialState;
 
   return (
     <>
