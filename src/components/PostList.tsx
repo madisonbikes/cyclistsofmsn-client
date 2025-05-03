@@ -2,8 +2,12 @@ import { useQueryPostList } from "../api/postQueries";
 import { IconButton, LinearProgress, Link } from "@mui/material";
 import { RawImage } from "./RawImage";
 import { Post, PostStatus } from "../api/contract";
-import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
-import { GridInitialStateCommunity } from "@mui/x-data-grid/models/gridStateCommunity";
+import {
+  DataGrid,
+  GridColDef,
+  GridRenderCellParams,
+  GridInitialState,
+} from "@mui/x-data-grid";
 import { Edit } from "@mui/icons-material";
 import { useNavigate, Link as RouterLink } from "react-router";
 import { formatTimestamp } from "../common/date";
@@ -79,11 +83,11 @@ export const PostList = () => {
       ),
     },
   ];
-  const initialState: GridInitialStateCommunity = {
+  const initialState = {
     columns: { columnVisibilityModel: { id: false } },
     pagination: { paginationModel: { pageSize: 25 } },
     sorting: { sortModel: [{ field: "timestamp", sort: "desc" }] },
-  };
+  } satisfies GridInitialState;
 
   return (
     <>
