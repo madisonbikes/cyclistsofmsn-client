@@ -44,6 +44,7 @@ const projectRules = {
       "error",
       { allowNumber: true },
     ],
+    "@typescript-eslint/consistent-type-definitions": "off",
     ...pluginReactHooks.configs.recommended.rules,
   },
 };
