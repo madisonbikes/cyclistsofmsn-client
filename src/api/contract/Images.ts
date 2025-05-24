@@ -27,5 +27,5 @@ export const Images = {
 
   put: (id: string): Request => put(`${prefix}/${id}`),
 
-  delete: (id: string): Request => del(`${prefix}/${id}`),
+  del: (id: string): Request => del(`${prefix}/${id}`),
 };

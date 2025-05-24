@@ -18,8 +18,13 @@ export const useQueryPostListCompleted = () =>
     },
   });
 
-export const useQueryPostInfo = (id: string) => {
+type Props = {
+  id: string;
+  enabled?: boolean;
+};
+export const useQueryPostInfo = ({ id, enabled }: Props) => {
   return useQuery({
+    enabled: enabled ?? true,
     queryKey: ["posts", id],
     queryFn: () => {
       return loadPostInfo(id);

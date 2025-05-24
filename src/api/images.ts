@@ -18,7 +18,7 @@ export const putImageData = async (id: string, imageData: PutImageBody) => {
 };
 
 export const deleteImageData = async (id: string) => {
-  const response = await Images.delete(id);
+  const response = await Images.del(id);
   return response.statusCode === 200;
 };
 

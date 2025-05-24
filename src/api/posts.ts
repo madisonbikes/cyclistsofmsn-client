@@ -25,3 +25,8 @@ export const loadPostInfo = async (id: string) => {
   const response = await Posts.single(id);
   return postSchema.parse(response.body);
 };
+
+export const deletePost = async (id: string) => {
+  const response = await Posts.del(id);
+  return response.statusCode === 200;
+};

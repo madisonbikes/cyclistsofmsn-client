@@ -3,15 +3,16 @@ import { useEffect, useState } from "react";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { putPostBodySchema, postStatusFlagSchema } from "../../api/contract";
-import { putPostData } from "../../api/posts";
+import { deletePost, putPostData } from "../../api/posts";
 import { useQueryPostInfo } from "../../api/postQueries";
 import { ConfirmLoseChanges } from "../ConfirmLoseChanges";
 import { FormSelect } from "../input/FormSelect";
 import { z } from "zod";
+import { ConfirmPostDelete } from "../ConfirmPostDelete";
 
 interface Props {
   id: string;
-  navigateUp: () => void;
+  onDismissForm: () => void;
 }
 
 const formDataSchema = putPostBodySchema;
@@ -23,10 +24,11 @@ const defaultValues: FormData = {
   status: { flag: "pending" },
 };
 
-export const PostEdit = ({ id, navigateUp }: Props) => {
+export const PostEdit = ({ id, onDismissForm }: Props) => {
   const queryClient = useQueryClient();
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
   const [showConfirmCancel, setShowConfirmCancel] = useState(false);
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 
   const form = useForm({ defaultValues });
   const {
@@ -35,17 +37,35 @@ export const PostEdit = ({ id, navigateUp }: Props) => {
     reset,
   } = form;
 
-  const { isSuccess, data: postInfo } = useQueryPostInfo(id);
-
-  const { mutate: mutatePostInfo, isSuccess: mutationSuccess } = useMutation({
+  const { mutate: mutatePostInfo, isSuccess: modifyPostSuccess } = useMutation({
     mutationFn: (mutated: FormData) => {
       console.log(`reset (mutate): ${JSON.stringify(mutated)}`);
       reset(mutated);
       return putPostData(id, mutated);
     },
     onSuccess: () => {
+      onDismissForm();
       return queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
+  });
+
+  const { mutate: mutateDeletePost, isSuccess: deletePostSuccess } =
+    useMutation({
+      mutationFn: async () => {
+        const deleted = await deletePost(id);
+        if (!deleted) {
+          throw new Error(`Failed to delete post id ${id}`);
+        }
+      },
+      onSuccess: () => {
+        onDismissForm();
+        return queryClient.invalidateQueries({ queryKey: ["posts"] });
+      },
+    });
+
+  const { isSuccess, data: postInfo } = useQueryPostInfo({
+    id,
+    enabled: !deletePostSuccess && !modifyPostSuccess,
   });
 
   useEffect(() => {
@@ -56,12 +76,6 @@ export const PostEdit = ({ id, navigateUp }: Props) => {
       setInitialLoadComplete(true);
     }
   }, [isSuccess, initialLoadComplete, reset, postInfo]);
-
-  useEffect(() => {
-    if (mutationSuccess) {
-      navigateUp();
-    }
-  }, [mutationSuccess, navigateUp]);
 
   if (!initialLoadComplete) {
     return <>Loading...</>;
@@ -74,38 +88,56 @@ export const PostEdit = ({ id, navigateUp }: Props) => {
           setShowConfirmCancel(false);
         }}
         onConfirm={() => {
-          navigateUp();
+          onDismissForm();
+        }}
+      />
+      <ConfirmPostDelete
+        open={showConfirmDelete}
+        onClose={() => {
+          setShowConfirmDelete(false);
+        }}
+        onConfirm={() => {
+          mutateDeletePost();
         }}
       />
       <form>
         <Status />
-        <br />
+        <div style={{ marginTop: "1rem", display: "flex", gap: "1rem" }}>
+          <Button
+            disabled={isSubmitting}
+            onClick={handleSubmit((formData) => {
+              mutatePostInfo(formData);
+            })}
+            variant="contained"
+          >
+            Save
+          </Button>
 
-        <Button
-          style={{ marginLeft: "5em" }}
-          disabled={isSubmitting}
-          onClick={handleSubmit((formData) => {
-            mutatePostInfo(formData);
-          })}
-          variant="contained"
-        >
-          Save
-        </Button>
+          <Button
+            disabled={isSubmitting}
+            onClick={() => {
+              setShowConfirmDelete(true);
+            }}
+            variant="contained"
+          >
+            Delete Post
+          </Button>
 
-        <Button
-          style={{ marginLeft: "1em" }}
-          disabled={isSubmitting}
-          onClick={() => {
-            if (!isDirty) {
-              navigateUp();
-            } else {
-              setShowConfirmCancel(true);
-            }
-          }}
-          variant="contained"
-        >
-          Discard
-        </Button>
+          <Button
+            disabled={isSubmitting}
+            color="warning"
+            onClick={() => {
+              if (!isDirty) {
+                onDismissForm();
+              } else {
+                setShowConfirmCancel(true);
+              }
+            }}
+            variant="contained"
+          >
+            Discard
+          </Button>
+        </div>
       </form>
     </FormProvider>
   );
