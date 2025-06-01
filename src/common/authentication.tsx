@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { LoginResponse, sessionInfo } from "../api/session";
+import { type LoginResponse, sessionInfo } from "../api/session";
 
 type AuthState = LoginResponse;
 

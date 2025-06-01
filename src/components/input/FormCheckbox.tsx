@@ -1,5 +1,10 @@
-import { Checkbox, CheckboxProps } from "@mui/material";
-import { Control, Controller, FieldValues, Path } from "react-hook-form";
+import { Checkbox, type CheckboxProps } from "@mui/material";
+import {
+  type Control,
+  Controller,
+  type FieldValues,
+  type Path,
+} from "react-hook-form";
 
 type Props<T extends FieldValues> = Omit<CheckboxProps, "name"> & {
   name: Path<T>;

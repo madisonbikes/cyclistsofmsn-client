@@ -3,15 +3,15 @@ import { IconButton, LinearProgress, Link } from "@mui/material";
 import { Check, DeleteForever, Edit } from "@mui/icons-material";
 import {
   DataGrid,
-  GridColDef,
-  GridRenderCellParams,
-  GridInitialState,
+  type GridColDef,
+  type GridRenderCellParams,
+  type GridInitialState,
 } from "@mui/x-data-grid";
 import { RawImage } from "./RawImage";
 import { useState } from "react";
 import { DeleteImage } from "./ImageDelete";
 import { useImageList } from "../api/imageQueries";
-import { Image } from "../api/contract";
+import type { Image } from "../api/contract";
 
 export const ImageList = () => {
   const [deleteImageId, setDeleteImageId] = useState<string | undefined>(

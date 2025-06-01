@@ -1,7 +1,7 @@
 import { useImageInfo } from "../api/imageQueries";
 import { useWindowDimensions } from "../common";
 import { RawImage } from "./RawImage";
-import { Image } from "../api/contract";
+import { type Image } from "../api/contract";
 
 interface Props {
   id: string | undefined;

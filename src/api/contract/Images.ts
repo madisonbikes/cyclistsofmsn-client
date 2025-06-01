@@ -1,5 +1,5 @@
 import { Request, get, put, del } from "superagent";
-import { GetImageQuery } from ".";
+import { type GetImageQuery } from ".";
 
 const prefix = `/api/v1/images`;
 
