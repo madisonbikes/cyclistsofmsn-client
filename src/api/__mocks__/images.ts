@@ -1,4 +1,4 @@
-import { Image } from "../contract/types";
+import type { Image } from "../contract/types";
 export const loadImageInfo = (id: string): Promise<Image> => {
   return Promise.resolve({
     id,

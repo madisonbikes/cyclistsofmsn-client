@@ -1,8 +1,8 @@
 import {
   authenticatedUserSchema,
   Session,
-  AuthenticatedUser,
-  LoginBody,
+  type AuthenticatedUser,
+  type LoginBody,
   loginBodySchema,
 } from "./contract";
 import { z } from "zod";

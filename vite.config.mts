@@ -1,4 +1,4 @@
-import { UserConfig } from "vite";
+import { type UserConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/

@@ -1,12 +1,12 @@
 import { useQueryPostList } from "../api/postQueries";
 import { IconButton, LinearProgress, Link } from "@mui/material";
 import { RawImage } from "./RawImage";
-import { Post, PostStatus } from "../api/contract";
+import type { Post, PostStatus } from "../api/contract";
 import {
   DataGrid,
-  GridColDef,
-  GridRenderCellParams,
-  GridInitialState,
+  type GridColDef,
+  type GridRenderCellParams,
+  type GridInitialState,
 } from "@mui/x-data-grid";
 import { Edit } from "@mui/icons-material";
 import { useNavigate, Link as RouterLink } from "react-router";

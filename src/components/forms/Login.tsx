@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
-import { LoginBody } from "../../api/contract";
+import { type LoginBody } from "../../api/contract";
 import { login } from "../../api/session";
 import { useAuth } from "../../common";
 import { FormTextField } from "../input/FormTextField";

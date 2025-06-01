@@ -1,7 +1,7 @@
 import {
   Images,
   imageSchema,
-  PutImageBody,
+  type PutImageBody,
   putImageBodySchema,
 } from "./contract";
 
