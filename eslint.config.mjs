@@ -45,6 +45,8 @@ const projectRules = {
       { allowNumber: true },
     ],
     "@typescript-eslint/consistent-type-definitions": "off",
+    // this is handled by tsc etc much better
+    "import/no-unresolved": "off",
     ...pluginReactHooks.configs.recommended.rules,
   },
 };
