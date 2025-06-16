@@ -6,7 +6,7 @@ import { putImageBodySchema } from "../../api/contract";
 import { putImageData } from "../../api/images";
 import { ConfirmLoseChanges } from "../ConfirmLoseChanges";
 import { FormTextField } from "../input/FormTextField";
-import { z } from "zod";
+import { z } from "zod/v4";
 import { FormCheckbox } from "../input/FormCheckbox";
 import { useImageInfo } from "../../api/imageQueries";
 

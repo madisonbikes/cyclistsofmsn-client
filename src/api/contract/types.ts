@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod/v4";
 
 export const getImageQuerySchema = z.object({
   width: z.coerce.number().optional(),
@@ -7,7 +7,7 @@ export const getImageQuerySchema = z.object({
 export type GetImageQuery = z.infer<typeof getImageQuerySchema>;
 
 const mutableImageSchema = z.object({
-  description: z.string().optional(),
+  description: z.string().nullish(),
   hidden: z.boolean(),
 });
 

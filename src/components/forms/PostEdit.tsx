@@ -7,7 +7,7 @@ import { deletePost, putPostData } from "../../api/posts";
 import { useQueryPostInfo } from "../../api/postQueries";
 import { ConfirmLoseChanges } from "../ConfirmLoseChanges";
 import { FormSelect } from "../input/FormSelect";
-import { z } from "zod";
+import { z } from "zod/v4";
 import { ConfirmPostDelete } from "../ConfirmPostDelete";
 
 interface Props {
@@ -148,20 +148,20 @@ const Status = () => {
   return (
     <FormSelect name="status.flag" control={control}>
       <MenuItem
-        key={postStatusFlagSchema.Values.pending}
-        value={postStatusFlagSchema.Values.pending}
+        key={postStatusFlagSchema.enum.pending}
+        value={postStatusFlagSchema.enum.pending}
       >
         Pending
       </MenuItem>
       <MenuItem
-        key={postStatusFlagSchema.Values.complete}
-        value={postStatusFlagSchema.Values.complete}
+        key={postStatusFlagSchema.enum.complete}
+        value={postStatusFlagSchema.enum.complete}
       >
         Complete
       </MenuItem>
       <MenuItem
-        key={postStatusFlagSchema.Values.failed}
-        value={postStatusFlagSchema.Values.failed}
+        key={postStatusFlagSchema.enum.failed}
+        value={postStatusFlagSchema.enum.failed}
       >
         Failed
       </MenuItem>
