@@ -1,5 +1,44 @@
 # Changelog
 
+## [1.3.1](https://github.com/madisonbikes/cyclistsofmsn-client/compare/cyclistsofmsn-client-v1.3.0...cyclistsofmsn-client-v1.3.1) (2025-07-02)
+
+
+### Bug Fixes
+
+* bump @emotion/styled from 11.14.0 to 11.14.1 ([3328874](https://github.com/madisonbikes/cyclistsofmsn-client/commit/3328874f899c3b9c41ab4b8d24987684556c5fa2))
+* bump @emotion/styled from 11.14.0 to 11.14.1 ([5159476](https://github.com/madisonbikes/cyclistsofmsn-client/commit/51594763197331b9f1d6a9fbeb685a6578c7e7eb))
+* bump @mui/icons-material from 7.0.2 to 7.1.0 ([10fc8c8](https://github.com/madisonbikes/cyclistsofmsn-client/commit/10fc8c88eb9b9c12b63c4ff60f1702b8031a74d9))
+* bump @mui/icons-material from 7.0.2 to 7.1.0 ([eab7f81](https://github.com/madisonbikes/cyclistsofmsn-client/commit/eab7f8139bd03d4a2c6dbb6c9e09bb3eee1517db))
+* bump @mui/icons-material from 7.1.0 to 7.2.0 ([de33de3](https://github.com/madisonbikes/cyclistsofmsn-client/commit/de33de389697e9a5335df7b360216ccb6c5a7b82))
+* bump @mui/icons-material from 7.1.0 to 7.2.0 ([1a906c6](https://github.com/madisonbikes/cyclistsofmsn-client/commit/1a906c64ddde70bbc3f3e12cb5f52d10d24da9d3))
+* bump @mui/material from 7.0.2 to 7.1.0 ([b1e3304](https://github.com/madisonbikes/cyclistsofmsn-client/commit/b1e33045b3947becba1da44f71b4f3d6ec06ed14))
+* bump @mui/material from 7.0.2 to 7.1.0 ([6875b5f](https://github.com/madisonbikes/cyclistsofmsn-client/commit/6875b5f437d5e7e38283235d7d9344602110295c))
+* bump @mui/material from 7.1.0 to 7.2.0 ([8729bc2](https://github.com/madisonbikes/cyclistsofmsn-client/commit/8729bc2635a290664cae2798d7f4675c5b8f1590))
+* bump @mui/material from 7.1.0 to 7.2.0 ([0ab7fe1](https://github.com/madisonbikes/cyclistsofmsn-client/commit/0ab7fe11706fec779a3f94a3259c3fd6de0bfc66))
+* bump @mui/x-data-grid from 8.2.0 to 8.6.0 ([ce9f952](https://github.com/madisonbikes/cyclistsofmsn-client/commit/ce9f9520c66fe21620250c32e618f6897e7de525))
+* bump @mui/x-data-grid from 8.2.0 to 8.6.0 ([249b67a](https://github.com/madisonbikes/cyclistsofmsn-client/commit/249b67a8592c60a1bdc31af0ed7a68dd558c4534))
+* bump @tanstack/react-query from 5.75.0 to 5.79.0 ([69aabb9](https://github.com/madisonbikes/cyclistsofmsn-client/commit/69aabb92579800536f871cc7801f35d95d553efd))
+* bump @tanstack/react-query from 5.75.0 to 5.79.0 ([9b0d02e](https://github.com/madisonbikes/cyclistsofmsn-client/commit/9b0d02e550e39e5576ae48e88129990eeef7daf8))
+* bump @tanstack/react-query from 5.79.0 to 5.81.5 ([1bc1889](https://github.com/madisonbikes/cyclistsofmsn-client/commit/1bc1889bf255439f79ad1390c5dc6ffb8ca2ff0d))
+* bump @tanstack/react-query from 5.79.0 to 5.81.5 ([394c3df](https://github.com/madisonbikes/cyclistsofmsn-client/commit/394c3df55f9c6457045e520cd5330b45e96d7a3b))
+* bump @tanstack/react-query-devtools from 5.75.0 to 5.79.0 ([c35675e](https://github.com/madisonbikes/cyclistsofmsn-client/commit/c35675e811403fe41958ddfd85efab2d82258534))
+* bump @tanstack/react-query-devtools from 5.75.0 to 5.79.0 ([e856655](https://github.com/madisonbikes/cyclistsofmsn-client/commit/e856655ed9d9abe9a54b79105958172458b152cb))
+* bump @tanstack/react-query-devtools from 5.79.0 to 5.81.5 ([f5a4e0f](https://github.com/madisonbikes/cyclistsofmsn-client/commit/f5a4e0f6145cbab0e5d8c562b9b592bb0b3a48a4))
+* bump @tanstack/react-query-devtools from 5.79.0 to 5.81.5 ([b290651](https://github.com/madisonbikes/cyclistsofmsn-client/commit/b290651efb989d959ddc1cd798a13416eb508692))
+* bump react-error-boundary from 5.0.0 to 6.0.0 ([05292b2](https://github.com/madisonbikes/cyclistsofmsn-client/commit/05292b206e70ded7a47e01d4f953b35563c1d9f5))
+* bump react-error-boundary from 5.0.0 to 6.0.0 ([b7f6a06](https://github.com/madisonbikes/cyclistsofmsn-client/commit/b7f6a06c1d72077917308c7c944df4dc80a99402))
+* bump react-hook-form from 7.56.1 to 7.59.0 ([61b6340](https://github.com/madisonbikes/cyclistsofmsn-client/commit/61b6340af54179dc6a88ff1b3f78a1d50f9c03e9))
+* bump react-hook-form from 7.56.1 to 7.59.0 ([eb00667](https://github.com/madisonbikes/cyclistsofmsn-client/commit/eb0066768c9c0e246b3b8e772fac6bf706026761))
+* bump react-router from 7.5.3 to 7.6.3 ([52d0585](https://github.com/madisonbikes/cyclistsofmsn-client/commit/52d05858e5f02ac660b90031aab180fcc1e0390f))
+* bump react-router from 7.5.3 to 7.6.3 ([5e9606a](https://github.com/madisonbikes/cyclistsofmsn-client/commit/5e9606a86d2f20c0809bd08e30114312c1940aa3))
+* bump superagent from 10.2.0 to 10.2.1 ([428e34a](https://github.com/madisonbikes/cyclistsofmsn-client/commit/428e34a795b6f454af7713723354c22319ff2b2c))
+* bump superagent from 10.2.0 to 10.2.1 ([e0b7ab8](https://github.com/madisonbikes/cyclistsofmsn-client/commit/e0b7ab8fa66461b98f3d6ca8191018982078c40e))
+* bump zod from 3.24.3 to 3.25.46 ([6c80229](https://github.com/madisonbikes/cyclistsofmsn-client/commit/6c80229ca631fc3c9aca99c04f9d2527f6b47f3b))
+* bump zod from 3.24.3 to 3.25.46 ([4993c67](https://github.com/madisonbikes/cyclistsofmsn-client/commit/4993c67a9d20104c8e271013cef0e96be4b9a1bb))
+* disable lint error for import, it's not really useful ([7923aa8](https://github.com/madisonbikes/cyclistsofmsn-client/commit/7923aa88bcdcf6896dffeb6631df2c4beac056d0))
+* update to zod v4 ([297c86f](https://github.com/madisonbikes/cyclistsofmsn-client/commit/297c86f9d55556d794ddf9933b76e515e0e80215))
+* use import type for types ([6f31731](https://github.com/madisonbikes/cyclistsofmsn-client/commit/6f31731e09692d73f0fa5565f2c197af73e81cc4))
+
 ## [1.3.0](https://github.com/madisonbikes/cyclistsofmsn-client/compare/cyclistsofmsn-client-v1.2.0...cyclistsofmsn-client-v1.3.0) (2025-05-24)
 
 
